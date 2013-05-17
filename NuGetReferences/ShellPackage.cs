@@ -29,14 +29,6 @@
 #else
             Tracer.Manager.SetTracingLevel(this.GetType().Namespace, SourceLevels.Information);
 #endif
-
-            var version = AppDomain.CurrentDomain.GetAssemblies()
-                .Select(asm => asm.GetName())
-                .Where(name => name.Name == "NuGet.Core")
-                .Select(name => name.Version.ToString())
-                .FirstOrDefault();
-
-            DevEnv.MessageBoxService.ShowInformation("Found NuGet version " + version);
         }
 
         public IDevEnv DevEnv { get; private set; }
