@@ -1,4 +1,6 @@
-﻿<#@ output extension=".vsixmanifest" #>
+﻿<#@ Template Hostspecific="True" #>
+<#@ Output Extension=".vsixmanifest" #>
+<#@ Import Namespace="System.IO" #>
 <#@ Include File="Info.ttinclude" #>
 <?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
@@ -36,6 +38,19 @@
         <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
             <Name>Visual Studio MPF</Name>
         </Reference>
+<#
+    var path = Path.Combine(Path.GetDirectoryName(this.Host.TemplateFile), "..\\Clarius.DevStore11.vsix");
+    // Embed DevStore if the vsix exists at the solution root.
+    if (File.Exists(path))
+    {
+#>
+		<Reference Id="Clarius.DevStore11">
+			<Name>DevStore</Name>
+			<VsixPath>Clarius.DevStore11.vsix</VsixPath>
+		</Reference>
+<#
+	}
+#>
     </References>
     <Content>
         <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>

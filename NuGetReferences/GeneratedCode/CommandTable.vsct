@@ -75,10 +75,10 @@
       <IDSymbol name="Uninstall" value="0x0003" />
     </GuidSymbol>
 
-      <GuidSymbol name="Update.bmpGuid" value="{84f3cfd8-8673-4be7-8bcf-63cc67da43c6}">
+      <GuidSymbol name="Update.bmpGuid" value="{14c1aa15-450d-4571-a316-1796c51b5107}">
         <IDSymbol name="Update.bmpId" value="1" />
       </GuidSymbol>
-      <GuidSymbol name="Uninstall.bmpGuid" value="{7e65d5b1-a8db-4bd1-b13f-f361a2257d74}">
+      <GuidSymbol name="Uninstall.bmpGuid" value="{88826f44-0515-4694-8dfb-28f9c2d99ac6}">
         <IDSymbol name="Uninstall.bmpId" value="1" />
       </GuidSymbol>
 </Symbols>
