@@ -26,14 +26,21 @@ namespace ClariusLabs.NuGetReferences.Properties
 	
 		/// <summary>
 		/// Looks up a localized string similar to: 
-		///	Your currently installed version of NuGet Package Manager is version {0}, but the NuGet References extension was tested with version {1}. Some functionality may not work as expected.
+		///	Failed to load NuGet Package Manager. Please contact support.
 		/// </summary>
-		public static string IncompatibleNuGet(object arg0, object arg1)
+		public static string FailedToLoadNuGetPackage { get { return Resources.FailedToLoadNuGetPackage; } }
+	
+		/// <summary>
+		/// Looks up a localized string similar to: 
+		///	Your currently installed version of NuGet Package Manager is version {installedVersion}, but the {productName} extension was tested with version {buildVersion}. Some functionality may not work as expected.
+		/// </summary>
+		public static string IncompatibleNuGet(object installedVersion, object productName, object buildVersion)
 		{
 			return Resources.IncompatibleNuGet.FormatWith(new 
 			{
-				arg0 = arg0,
-				arg1 = arg1,
+				installedVersion = installedVersion,
+				productName = productName,
+				buildVersion = buildVersion,
 			});
 		}
 	
@@ -42,12 +49,6 @@ namespace ClariusLabs.NuGetReferences.Properties
 		///	(Initializing NuGet Console)
 		/// </summary>
 		public static string InitializingConsole { get { return Resources.InitializingConsole; } }
-	
-		/// <summary>
-		/// Looks up a localized string similar to: 
-		///	2.5.40416.9020
-		/// </summary>
-		public static string NuGetMinimumVersion { get { return Resources.NuGetMinimumVersion; } }
 		
 		///	<summary>
 		///	Provides access to string resources.

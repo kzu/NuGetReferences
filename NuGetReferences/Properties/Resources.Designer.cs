@@ -70,7 +70,16 @@ namespace ClariusLabs.NuGetReferences.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your currently installed version of NuGet Package Manager is version {0}, but the NuGet References extension was tested with version {1}. Some functionality may not work as expected..
+        ///   Looks up a localized string similar to Failed to load NuGet Package Manager. Please contact support..
+        /// </summary>
+        internal static string FailedToLoadNuGetPackage {
+            get {
+                return ResourceManager.GetString("FailedToLoadNuGetPackage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your currently installed version of NuGet Package Manager is version {installedVersion}, but the {productName} extension was tested with version {buildVersion}. Some functionality may not work as expected..
         /// </summary>
         internal static string IncompatibleNuGet {
             get {
@@ -84,15 +93,6 @@ namespace ClariusLabs.NuGetReferences.Properties {
         internal static string InitializingConsole {
             get {
                 return ResourceManager.GetString("InitializingConsole", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2.5.40416.9020.
-        /// </summary>
-        internal static string NuGetMinimumVersion {
-            get {
-                return ResourceManager.GetString("NuGetMinimumVersion", resourceCulture);
             }
         }
         

@@ -4,6 +4,7 @@
     using System.Diagnostics;
     using System.Linq;
     using System.Runtime.InteropServices;
+    using ClariusLabs.NuGetReferences.Properties;
     using Clide;
     using Clide.Diagnostics;
     using Microsoft.VisualStudio.Shell;
@@ -29,6 +30,29 @@
 #else
             Tracer.Manager.SetTracingLevel(this.GetType().Namespace, SourceLevels.Information);
 #endif
+
+            try
+            {
+                var nugetPackage = this.GetLoadedPackage(new Guid(Guids.PackageGuid));
+                var version = AppDomain.CurrentDomain.GetAssemblies()
+                    .Select(asm => asm.GetName())
+                    .Where(name => name.Name.StartsWith("NuGet.Tools"))
+                    .Select(name => name.Version)
+                    .FirstOrDefault();
+
+                var buildVersion = new Version(Constants.NuGetBuildVersion);
+                if (version == null || version < buildVersion)
+                    DevEnv.MessageBoxService.Show(
+                        Strings.IncompatibleNuGet(version, Constants.ProductName, Constants.NuGetBuildVersion),
+                        title: Constants.ProductName,
+                        icon: System.Windows.MessageBoxImage.Error);
+            }
+            catch (Exception)
+            {
+                DevEnv.MessageBoxService.Show(Strings.FailedToLoadNuGetPackage, 
+                    title: Constants.ProductName, 
+                    icon: System.Windows.MessageBoxImage.Error);
+            }
         }
 
         public IDevEnv DevEnv { get; private set; }

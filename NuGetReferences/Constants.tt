@@ -1,5 +1,6 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="NuGet.Core.dll" #>
+<#@ include file="Info.ttinclude" #>
 <#@ output extension=".g.cs" #>
 namespace ClariusLabs.NuGetReferences
 {
@@ -8,6 +9,7 @@ namespace ClariusLabs.NuGetReferences
 
     partial class Constants
     {
-        public static string NuGetBuildVersion = "<#= typeof(NuGet.IPackage).Assembly.GetName().Version #>";
+        public const string ProductName = "<#= product #>";
+        public const string NuGetBuildVersion = "<#= typeof(NuGet.IPackage).Assembly.GetName().Version #>";
     }
 }
