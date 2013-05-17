@@ -1,4 +1,5 @@
-﻿namespace ClariusLabs.NuGetReferences
+﻿using System.Xml.Linq;
+namespace ClariusLabs.NuGetReferences
 {
     using System;
     using System.Collections.Concurrent;
@@ -34,7 +35,6 @@
         private uint selectionCookie;
 
         private IShellPackage package;
-        private dynamic managerFactory;
         private IVsPackageInstallerServices packageInstaller;
         private IVsPackageInstallerEvents installerEvents;
         private SelectionService selectionService;
@@ -43,13 +43,11 @@
         private List<IGraphContext> trackingContext = new List<IGraphContext>();
 
         [ImportingConstructor]
-        public ReferencesGraphProvider(IShellPackage package, 
-            [Import("NuGet.VisualStudio.IVsPackageManagerFactory")] dynamic managerFactory,
+        public ReferencesGraphProvider(IShellPackage package,
             IVsPackageInstallerServices packageInstaller,
             IVsPackageInstallerEvents installerEvents)
         {
             this.package = package;
-            this.managerFactory = managerFactory;
             this.packageInstaller = packageInstaller;
             this.installerEvents = installerEvents;
 
@@ -120,9 +118,9 @@
 
         private void TryAddPackageNodes(object state)
         {
+            var context = (IGraphContext)state;
             try
             {
-                var context = (IGraphContext)state;
                 AddPackageNodes(context, context.InputNodes.First());
                 TrackChanges(context);
             }
@@ -130,20 +128,24 @@
             {
                 tracer.Error(e);
             }
+            finally
+            {
+                context.OnCompleted();
+            }
         }
 
         private void AddPackageNodes(IGraphContext context, GraphNode parentNode)
         {
-            var nodeId = parentNode.GetValue<GraphNodeId>("Id");
-            var projectUri = nodeId.GetNestedValueByName<Uri>(CodeGraphNodeIdName.Assembly);
-            var projectPath = new FileInfo(projectUri.AbsolutePath).FullName;
-            var project = package.DevEnv.SolutionExplorer().Solution.Traverse()
-                .OfType<IProjectNode>()
-                .First(x => x.PhysicalPath.Equals(projectPath, StringComparison.OrdinalIgnoreCase));
+            var filePath = parentNode.Properties
+                .Where(pair => pair.Key.Id == "FilePath")
+                .Select(pair => pair.Value)
+                .OfType<string>()
+                .FirstOrDefault();
 
-            AddPackageNodes(context, parentNode, GetInstalledPackages(project));
+            if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
+                return;
 
-            context.OnCompleted();
+            AddPackageNodes(context, parentNode, GetInstalledPackages(filePath));
         }
 
         private static void AddPackageNodes(IGraphContext context, GraphNode parentNode, IEnumerable<IVsPackageMetadata> installedPackages)
@@ -204,8 +206,8 @@
             {
                 var parentId = parent.GetValue<GraphNodeId>("Id");
                 var nodeId = GraphNodeId.GetNested(
-                    parentId, 
-                    GraphNodeId.GetPartial(CodeGraphNodeIdName.Member, package.Id), 
+                    parentId,
+                    GraphNodeId.GetPartial(CodeGraphNodeIdName.Member, package.Id),
                     GraphNodeId.GetPartial(CodeGraphNodeIdName.Parameter, package.VersionString));
 
                 var node = context.Graph.Nodes.Get(nodeId);
@@ -227,14 +229,12 @@
             }
         }
 
-        private IEnumerable<IVsPackageMetadata> GetInstalledPackages(IProjectNode project)
+        private IEnumerable<IVsPackageMetadata> GetInstalledPackages(string packagesConfig)
         {
-            var packageManager = managerFactory.CreatePackageManager();
-            var projectManager = packageManager.GetProjectManager(project.As<Project>());
             var projectPackages = new HashSet<Tuple<string, string>>(
-                // \o/: This is dangerous dynamic code, all in the name of avoiding taking a dependency on NuGet.Core and
-                // avoid versioning problems. These are all public APIs anyway, so it should work just fine.
-                ((IEnumerable<dynamic>)projectManager.LocalRepository.GetPackages()).Select(x => Tuple.Create((string)x.Id, (string)x.Version.ToString())));
+                from package in XDocument.Load(packagesConfig).Root.Elements()
+                select Tuple.Create(package.Attribute("id").Value, package.Attribute("version").Value));
+
             var allPackages = packageInstaller.GetInstalledPackages().Where(x => projectPackages.Contains(Tuple.Create(x.Id, x.VersionString)));
 
             return allPackages;
@@ -294,7 +294,7 @@
             if (this.searchItems != null && this.searchItems.TryDequeue(out item))
             {
                 var normalizedTerm = term.ToLowerInvariant();
-                var installedPackages = GetInstalledPackages(item.OwningProject)
+                var installedPackages = GetInstalledPackages(item.PhysicalPath)
                     .Where(x => x.Id.ToLowerInvariant().Contains(normalizedTerm));
 
                 var configNode = this.GetOrCreateConfigNode(context, item);

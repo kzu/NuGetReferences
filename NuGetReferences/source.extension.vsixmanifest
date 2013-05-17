@@ -21,10 +21,6 @@
         <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
             <Name>Visual Studio MPF</Name>
         </Reference>
-		<Reference Id="Clarius.DevStore11">
-			<Name>DevStore</Name>
-			<VsixPath>Clarius.DevStore11.vsix</VsixPath>
-		</Reference>
     </References>
     <Content>
         <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>

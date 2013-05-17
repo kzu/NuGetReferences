@@ -13,7 +13,9 @@
     <AssemblyName>ClariusLabs.NuGetReferences</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
-    <CreateVsixContainer Condition=" '$(Configuration)' == 'Debug' ">false</CreateVsixContainer>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <!--<CreateVsixContainer Condition=" '$(Configuration)' == 'Debug' ">false</CreateVsixContainer>-->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -111,8 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Clarius.DevStore11.vsix" Condition="Exists('..\Clarius.DevStore11.vsix')">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <Link>Clarius.DevStore11.vsix</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Clarius.DevStore11.vsix</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
       <Visible>True</Visible>
     </Content>
@@ -145,7 +147,9 @@
       <LastGenOutput>VSPackage.resx</LastGenOutput>
     </None>
     <None Include="Info.ttinclude" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Resources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.Strings.cs</LastGenOutput>
@@ -161,7 +165,7 @@
   <ItemGroup>
     <Reference Include="Clide, Version=1.4.1305.1705, Culture=neutral, PublicKeyToken=5b91f4c51d49ec0c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Clide.1.4.1305.1705\lib\net40\Clide.dll</HintPath>
+      <HintPath>..\packages\Clide.1.4.1305.1705\lib\net40\Clide.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.GraphModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -180,9 +184,8 @@
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.11.0, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="NuGet.VisualStudio">
-      <HintPath>packages\NuGet.VisualStudio.2.5.0\lib\net40\NuGet.VisualStudio.dll</HintPath>
+      <HintPath>..\packages\NuGet.VisualStudio.2.5.0\lib\net40\NuGet.VisualStudio.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -196,6 +199,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -297,4 +301,5 @@
     <StartAction>Program</StartAction>
     <StartArguments>/rootsuffix Exp</StartArguments>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
