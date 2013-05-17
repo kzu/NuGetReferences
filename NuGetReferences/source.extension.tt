@@ -23,10 +23,15 @@
         <Icon><#=image#></Icon>
 <#
 }
+if(HasValue(preview))
+{
+#>
+        <PreviewImage><#=preview#></PreviewImage>
+<#
+}
 #>
         <MoreInfoUrl></MoreInfoUrl>
         <GettingStartedGuide></GettingStartedGuide>
-        <PreviewImage></PreviewImage>
         <SupportedProducts>
             <VisualStudio Version="<#=supportedVsVersion#>">
                 <Edition>Pro</Edition>

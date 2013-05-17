@@ -7,9 +7,9 @@
         <Description xml:space="preserve">Visualize and manage your NuGet package references right in the solution explorer</Description>
         <Locale>1033</Locale>
         <Icon>Resources\Extension.png</Icon>
+        <PreviewImage>Resources\Preview.png</PreviewImage>
         <MoreInfoUrl></MoreInfoUrl>
         <GettingStartedGuide></GettingStartedGuide>
-        <PreviewImage></PreviewImage>
         <SupportedProducts>
             <VisualStudio Version="11.0">
                 <Edition>Pro</Edition>

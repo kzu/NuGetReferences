@@ -7,6 +7,7 @@
 	public const string eula = @"";
 	public const string icon = @"Resources\Extension.ico";
 	public const string image = @"Resources\Extension.png";
+    public const string preview = @"Resources\Preview.png";
 
 	//------------------------------------------------------------------------------
 	// Project Info
