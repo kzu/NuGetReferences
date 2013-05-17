@@ -21,6 +21,7 @@
     using EnvDTE;
     using System.IO;
     using NuGet;
+    using Clide.Diagnostics;
 
     [GraphProvider(Name = Id.PrefixDot + "GraphProvider")]
     public class ReferencesGraphProvider : IGraphProvider, IVsSelectionEvents
@@ -33,7 +34,7 @@
         private uint selectionCookie;
 
         private IShellPackage package;
-        private IVsPackageManagerFactory managerFactory;
+        private dynamic managerFactory;
         private IVsPackageInstallerServices packageInstaller;
         private IVsPackageInstallerEvents installerEvents;
         private SelectionService selectionService;
@@ -42,7 +43,8 @@
         private List<IGraphContext> trackingContext = new List<IGraphContext>();
 
         [ImportingConstructor]
-        public ReferencesGraphProvider(IShellPackage package, IVsPackageManagerFactory managerFactory,
+        public ReferencesGraphProvider(IShellPackage package, 
+            [Import("NuGet.VisualStudio.IVsPackageManagerFactory")] dynamic managerFactory,
             IVsPackageInstallerServices packageInstaller,
             IVsPackageInstallerEvents installerEvents)
         {
@@ -229,8 +231,11 @@
         {
             var packageManager = managerFactory.CreatePackageManager();
             var projectManager = packageManager.GetProjectManager(project.As<Project>());
-            var projectPackages = new HashSet<Tuple<string, SemanticVersion>>(projectManager.LocalRepository.GetPackages().Select(x => Tuple.Create(x.Id, x.Version)));
-            var allPackages = packageInstaller.GetInstalledPackages().Where(x => projectPackages.Contains(Tuple.Create(x.Id, x.Version)));
+            var projectPackages = new HashSet<Tuple<string, string>>(
+                // \o/: This is dangerous dynamic code, all in the name of avoiding taking a dependency on NuGet.Core and
+                // avoid versioning problems. These are all public APIs anyway, so it should work just fine.
+                ((IEnumerable<dynamic>)projectManager.LocalRepository.GetPackages()).Select(x => Tuple.Create((string)x.Id, (string)x.Version.ToString())));
+            var allPackages = packageInstaller.GetInstalledPackages().Where(x => projectPackages.Contains(Tuple.Create(x.Id, x.VersionString)));
 
             return allPackages;
         }
@@ -262,7 +267,7 @@
                 var items = package.DevEnv.SolutionExplorer().Solution
                     .Traverse()
                     .OfType<IItemNode>()
-                    .Where(item => item.DisplayName == global::NuGet.Constants.PackageReferenceFile);
+                    .Where(item => item.DisplayName == "packages.config");
 
                 searchItems = new ConcurrentQueue<IItemNode>();
 

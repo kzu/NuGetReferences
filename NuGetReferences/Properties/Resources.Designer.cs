@@ -70,11 +70,29 @@ namespace ClariusLabs.NuGetReferences.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your currently installed version of NuGet Package Manager is version {0}, but the NuGet References extension was tested with version {1}. Some functionality may not work as expected..
+        /// </summary>
+        internal static string IncompatibleNuGet {
+            get {
+                return ResourceManager.GetString("IncompatibleNuGet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (Initializing NuGet Console).
         /// </summary>
         internal static string InitializingConsole {
             get {
                 return ResourceManager.GetString("InitializingConsole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2.5.40416.9020.
+        /// </summary>
+        internal static string NuGetMinimumVersion {
+            get {
+                return ResourceManager.GetString("NuGetMinimumVersion", resourceCulture);
             }
         }
         

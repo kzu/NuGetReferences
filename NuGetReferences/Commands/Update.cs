@@ -15,6 +15,7 @@
     using NuGet.VisualStudio;
     using System.Dynamic;
     using ClariusLabs.NuGetReferences.Properties;
+    using Clide.Diagnostics;
 
     [Command(Guids.PackageGuid, Guids.CommandSetGuid, CommandIds.Update)]
     public class Update : ICommandExtension

@@ -18,9 +18,6 @@
         <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.5"/>
     </Identifier>
     <References>
-        <Reference Id="NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5" MinVersion="4.0">
-            <Name>NuGet Package Manager</Name>
-        </Reference>
         <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
             <Name>Visual Studio MPF</Name>
         </Reference>

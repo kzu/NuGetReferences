@@ -10,6 +10,7 @@
     using Clide.Solution;
     using NuGet.VisualStudio;
     using ClariusLabs.NuGetReferences.Properties;
+    using Clide.Diagnostics;
 
     [Command(Guids.PackageGuid, Guids.CommandSetGuid, CommandIds.Uninstall)]
     public class Uninstall : ICommandExtension

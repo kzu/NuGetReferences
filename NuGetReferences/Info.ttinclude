@@ -21,13 +21,6 @@
 	public const string supportedFrxMinVersion = @"4.0";
 	public const string supportedFrxMaxVersion = @"4.5";
 
-	//------------------------------------------------------------------------------
-	// NuGet Info
-	//------------------------------------------------------------------------------
-	public const string nugetVsixName = @"NuGet Package Manager";
-	public const string nugetVsixId = @"NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5";
-	public const string nugetMinVersion = @"4.0";
-
 	public bool HasValue(string value)
 	{
 	    return !string.IsNullOrEmpty(value);

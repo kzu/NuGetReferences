@@ -22,7 +22,7 @@
 
         internal static bool IsConfigNode(this GraphNode node)
         {
-            return node.HasCategory(CodeNodeCategories.ProjectItem) && node.Label == global::NuGet.Constants.PackageReferenceFile;
+            return node.HasCategory(CodeNodeCategories.ProjectItem) && node.Label == "packages.config";
         }
 
         internal static bool IsPackageNode(this GraphNode node)

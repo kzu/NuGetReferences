@@ -35,6 +35,12 @@
   <ItemGroup>
     <Compile Include="Commands\Uninstall.cs" />
     <Compile Include="Commands\Update.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Constants.g.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Constants.tt</DependentUpon>
+    </Compile>
     <Compile Include="GeneratedCode\AssemblyInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +114,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
     </None>
+    <None Include="Constants.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Constants.g.cs</LastGenOutput>
+    </None>
     <None Include="GeneratedCode\CommandIds.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CommandIds.cs</LastGenOutput>
@@ -143,8 +153,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Clide">
-      <HintPath>packages\Clide.1.3.1305.1514\lib\net40\Clide.dll</HintPath>
+    <Reference Include="Clide, Version=1.4.1305.1705, Culture=neutral, PublicKeyToken=5b91f4c51d49ec0c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Clide.1.4.1305.1705\lib\net40\Clide.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.GraphModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -160,13 +171,10 @@
     <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0" />
     <Reference Include="Microsoft.VisualStudio.TextManager.Interop" />
     <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0" />
-    <Reference Include="NuGet.Core, Version=2.5.40416.9020, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\NuGet.Core.2.5.0\lib\net40-Client\NuGet.Core.dll</HintPath>
-    </Reference>
     <Reference Include="NuGet.VisualStudio">
       <HintPath>packages\NuGet.VisualStudio.2.5.0\lib\net40\NuGet.VisualStudio.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

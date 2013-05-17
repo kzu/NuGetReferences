@@ -33,9 +33,6 @@
         <SupportedFrameworkRuntimeEdition MinVersion="<#=supportedFrxMinVersion#>" MaxVersion="<#=supportedFrxMaxVersion#>"/>
     </Identifier>
     <References>
-        <Reference Id="<#=nugetVsixId#>" MinVersion="<#=nugetMinVersion#>">
-            <Name><#=nugetVsixName#></Name>
-        </Reference>
         <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
             <Name>Visual Studio MPF</Name>
         </Reference>

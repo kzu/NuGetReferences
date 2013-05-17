@@ -120,8 +120,14 @@
   <data name="ExecutingCommand" xml:space="preserve">
     <value>(Executing Command)</value>
   </data>
+  <data name="IncompatibleNuGet" xml:space="preserve">
+    <value>Your currently installed version of NuGet Package Manager is version {0}, but the NuGet References extension was tested with version {1}. Some functionality may not work as expected.</value>
+  </data>
   <data name="InitializingConsole" xml:space="preserve">
     <value>(Initializing NuGet Console)</value>
+  </data>
+  <data name="NuGetMinimumVersion" xml:space="preserve">
+    <value>2.5.40416.9020</value>
   </data>
   <data name="Uninstall_Text" xml:space="preserve">
     <value>Uninstall</value>
