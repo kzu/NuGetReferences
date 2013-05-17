@@ -1,5 +1,5 @@
 <#@ Template Debug="False" Hostspecific="True" Language="C#" #>
-<#@ Output Extension="Strings.cs" #>
+<#@ Output Extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Xml" #>
 <#@ Assembly Name="System.Xml.Linq" #>
@@ -12,8 +12,8 @@
 <#@ Import Namespace="System.Text.RegularExpressions" #>
 <#
 var targetNamespace = "ClariusLabs.NuGetReferences.Properties";
-var targetClassName = "Strings";
-var resourceFile = Path.ChangeExtension(this.Host.TemplateFile, "resx");
+var targetClassName = Path.GetFileNameWithoutExtension(this.Host.TemplateFile);
+var resourceFile = Path.Combine(Path.GetDirectoryName(this.Host.TemplateFile), "Resources.resx");
 
 if (!File.Exists(resourceFile))
 	return "// Please create a " + Path.GetFileName(resourceFile) + " file.";
@@ -33,9 +33,9 @@ namespace <#= targetNamespace #>
     using System;
     using System.Globalization;
 <#
-RenderArea(rootArea, "");
-#>}
-
+    RenderArea(rootArea, "");
+#>
+}
 <#+
 private void RenderMessageHint(string value)
 {
@@ -43,7 +43,7 @@ private void RenderMessageHint(string value)
     {
 	    PushIndent("\t");
 #>
-///	<#= line #>
+///	"<#= line #>"
 <#+
         PopIndent();
     }
@@ -58,47 +58,20 @@ private void RenderArea(ResourceArea area, string visibility)
 ///	<summary>
 ///	Provides access to string resources.
 ///	</summary>
-[global::System.CodeDom.Compiler.GeneratedCodeAttribute("netfx-System.Strings", "1.0.0.0")]
+[global::System.CodeDom.Compiler.GeneratedCodeAttribute("TextTemplate", "1.0")]
 [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 <#=visibility #>static partial class <#=area.Name #>
 {<#+
 	foreach (var value in area.Values)
 	{
-		if (!value.HasFormat)
-		{
 #>
 
 	/// <summary>
-	/// Looks up a localized string similar to: 
+	/// Resource name for a localized string similar to: 
 <#+ RenderMessageHint(value.Value); #>
 	/// </summary>
-	public static string <#=value.Name #> { get { return Resources.<#=area.Prefix #><#=value.Name #>; } }
+	public const string <#=value.Name #> = "<#=area.Prefix #><#=value.Name #>";
 <#+
-		}
-		else
-		{
-#>
-
-	/// <summary>
-	/// Looks up a localized string similar to: 
-<#+ RenderMessageHint(value.Value); #>
-	/// </summary>
-	public static string <#=value.Name #>(<#= string.Join(", ", value.FormatNames.Select(s => "object " + s)) #>)
-	{
-		return Resources.<#=area.Prefix #><#=value.Name #>.FormatWith(new 
-		{
-<#+
-for (int i = 0; i < value.FormatNames.Count; i++)
-{
-#>
-			<#=value.FormatNames[i] #> = <#=value.FormatNames[i]#>,
-<#+
-}
-#>
-		});
-	}
-<#+
-		}
 	}
 
 	foreach (var nestedArea in area.NestedAreas)

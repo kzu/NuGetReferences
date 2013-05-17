@@ -6,11 +6,11 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Globalization;
-
 namespace ClariusLabs.NuGetReferences.Properties
 {
+    using System;
+    using System.Globalization;
+	
 	///	<summary>
 	///	Provides access to string resources.
 	///	</summary>
@@ -49,6 +49,126 @@ namespace ClariusLabs.NuGetReferences.Properties
 		///	(Initializing NuGet Console)
 		/// </summary>
 		public static string InitializingConsole { get { return Resources.InitializingConsole; } }
+		
+		///	<summary>
+		///	Provides access to string resources.
+		///	</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("netfx-System.Strings", "1.0.0.0")]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		public static partial class PackageInfo
+		{
+			/// <summary>
+			/// Looks up a localized string similar to: 
+			///	General
+			/// </summary>
+			public static string Category { get { return Resources.PackageInfo_Category; } }
+		
+			/// <summary>
+			/// Looks up a localized string similar to: 
+			///	NuGet Package
+			/// </summary>
+			public static string DisplayName { get { return Resources.PackageInfo_DisplayName; } }
+			
+			///	<summary>
+			///	Provides access to string resources.
+			///	</summary>
+			[global::System.CodeDom.Compiler.GeneratedCodeAttribute("netfx-System.Strings", "1.0.0.0")]
+			[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+			public static partial class Id
+			{
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Package identifier.
+				/// </summary>
+				public static string Description { get { return Resources.PackageInfo_Id_Description; } }
+			
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Id
+				/// </summary>
+				public static string DisplayName { get { return Resources.PackageInfo_Id_DisplayName; } }
+			}
+			
+			///	<summary>
+			///	Provides access to string resources.
+			///	</summary>
+			[global::System.CodeDom.Compiler.GeneratedCodeAttribute("netfx-System.Strings", "1.0.0.0")]
+			[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+			public static partial class Version
+			{
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Package version.
+				/// </summary>
+				public static string Description { get { return Resources.PackageInfo_Version_Description; } }
+			
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Version
+				/// </summary>
+				public static string DisplayName { get { return Resources.PackageInfo_Version_DisplayName; } }
+			}
+			
+			///	<summary>
+			///	Provides access to string resources.
+			///	</summary>
+			[global::System.CodeDom.Compiler.GeneratedCodeAttribute("netfx-System.Strings", "1.0.0.0")]
+			[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+			public static partial class Title
+			{
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Package title.
+				/// </summary>
+				public static string Description { get { return Resources.PackageInfo_Title_Description; } }
+			
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Title
+				/// </summary>
+				public static string DisplayName { get { return Resources.PackageInfo_Title_DisplayName; } }
+			}
+			
+			///	<summary>
+			///	Provides access to string resources.
+			///	</summary>
+			[global::System.CodeDom.Compiler.GeneratedCodeAttribute("netfx-System.Strings", "1.0.0.0")]
+			[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+			public static partial class Authors
+			{
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Package authors.
+				/// </summary>
+				public static string Description { get { return Resources.PackageInfo_Authors_Description; } }
+			
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Authors
+				/// </summary>
+				public static string DisplayName { get { return Resources.PackageInfo_Authors_DisplayName; } }
+			}
+			
+			///	<summary>
+			///	Provides access to string resources.
+			///	</summary>
+			[global::System.CodeDom.Compiler.GeneratedCodeAttribute("netfx-System.Strings", "1.0.0.0")]
+			[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+			public static partial class InstallPath
+			{
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Package installation location.
+				/// </summary>
+				public static string Description { get { return Resources.PackageInfo_InstallPath_Description; } }
+			
+				/// <summary>
+				/// Looks up a localized string similar to: 
+				///	Install Path
+				/// </summary>
+				public static string DisplayName { get { return Resources.PackageInfo_InstallPath_DisplayName; } }
+			}
+		}
 		
 		///	<summary>
 		///	Provides access to string resources.

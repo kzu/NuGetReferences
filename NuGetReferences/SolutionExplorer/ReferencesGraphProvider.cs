@@ -1,5 +1,4 @@
-﻿using System.Xml.Linq;
-namespace ClariusLabs.NuGetReferences
+﻿namespace ClariusLabs.NuGetReferences
 {
     using System;
     using System.Collections.Concurrent;
@@ -23,6 +22,7 @@ namespace ClariusLabs.NuGetReferences
     using System.IO;
     using NuGet;
     using Clide.Diagnostics;
+    using System.Xml.Linq;
 
     [GraphProvider(Name = Id.PrefixDot + "GraphProvider")]
     public class ReferencesGraphProvider : IGraphProvider, IVsSelectionEvents
@@ -364,6 +364,15 @@ namespace ClariusLabs.NuGetReferences
                             var selectedPackage = selectedGraphNode.Node.GetValue<IVsPackageMetadata>(ReferencesGraphSchema.PackageProperty);
                             if (selectedPackage != null)
                             {
+                                var selection = new NuGetPackage
+                                {
+                                    Id = selectedPackage.Id,
+                                    Title = selectedPackage.Title, 
+                                    Version = selectedPackage.VersionString,
+                                    Authors = string.Join(", ", selectedPackage.Authors),
+                                    InstallPath = selectedPackage.InstallPath,
+                                };
+
                                 if (this.selectionService == null)
                                 {
                                     // Get the service provider form Microsoft.VisualStudio.PlatformUI.HierarchyPivotNavigator
@@ -371,13 +380,13 @@ namespace ClariusLabs.NuGetReferences
                                     this.selectionService = new SelectionService(serviceProvider);
                                 }
 
-                                this.selectionService.Select(selectedPackage);
+                                this.selectionService.Select(selection);
 
                                 System.Threading.Tasks.Task.Factory.StartNew(() =>
                                 {
                                     System.Threading.Thread.Sleep(10);
 
-                                    object selected = selectedPackage;
+                                    object selected = selection;
                                     var browsable = ((object)selectedPackage) as IBrowsablePattern;
                                     if (browsable != null)
                                         selected = browsable.GetBrowseObject();

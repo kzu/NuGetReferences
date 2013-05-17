@@ -97,6 +97,114 @@ namespace ClariusLabs.NuGetReferences.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Package authors..
+        /// </summary>
+        internal static string PackageInfo_Authors_Description {
+            get {
+                return ResourceManager.GetString("PackageInfo_Authors_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authors.
+        /// </summary>
+        internal static string PackageInfo_Authors_DisplayName {
+            get {
+                return ResourceManager.GetString("PackageInfo_Authors_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string PackageInfo_Category {
+            get {
+                return ResourceManager.GetString("PackageInfo_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NuGet Package.
+        /// </summary>
+        internal static string PackageInfo_DisplayName {
+            get {
+                return ResourceManager.GetString("PackageInfo_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package identifier..
+        /// </summary>
+        internal static string PackageInfo_Id_Description {
+            get {
+                return ResourceManager.GetString("PackageInfo_Id_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        internal static string PackageInfo_Id_DisplayName {
+            get {
+                return ResourceManager.GetString("PackageInfo_Id_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package installation location..
+        /// </summary>
+        internal static string PackageInfo_InstallPath_Description {
+            get {
+                return ResourceManager.GetString("PackageInfo_InstallPath_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install Path.
+        /// </summary>
+        internal static string PackageInfo_InstallPath_DisplayName {
+            get {
+                return ResourceManager.GetString("PackageInfo_InstallPath_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package title..
+        /// </summary>
+        internal static string PackageInfo_Title_Description {
+            get {
+                return ResourceManager.GetString("PackageInfo_Title_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string PackageInfo_Title_DisplayName {
+            get {
+                return ResourceManager.GetString("PackageInfo_Title_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package version..
+        /// </summary>
+        internal static string PackageInfo_Version_Description {
+            get {
+                return ResourceManager.GetString("PackageInfo_Version_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string PackageInfo_Version_DisplayName {
+            get {
+                return ResourceManager.GetString("PackageInfo_Version_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uninstall.
         /// </summary>
         internal static string Uninstall_Text {

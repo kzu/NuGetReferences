@@ -21,7 +21,7 @@
         protected override void Initialize()
         {
             base.Initialize();
-            
+
             Host.Initialize(this, "NuGet References");
             this.DevEnv = Clide.DevEnv.Get(this);
 
@@ -41,16 +41,18 @@
                     .FirstOrDefault();
 
                 var buildVersion = new Version(Constants.NuGetBuildVersion);
-                if (version == null || version < buildVersion)
+                if (version != null && version < buildVersion)
+                {
                     DevEnv.MessageBoxService.Show(
                         Strings.IncompatibleNuGet(version, Constants.ProductName, Constants.NuGetBuildVersion),
                         title: Constants.ProductName,
                         icon: System.Windows.MessageBoxImage.Error);
+                }
             }
             catch (Exception)
             {
-                DevEnv.MessageBoxService.Show(Strings.FailedToLoadNuGetPackage, 
-                    title: Constants.ProductName, 
+                DevEnv.MessageBoxService.Show(Strings.FailedToLoadNuGetPackage,
+                    title: Constants.ProductName,
                     icon: System.Windows.MessageBoxImage.Error);
             }
         }

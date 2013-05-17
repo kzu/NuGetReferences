@@ -129,10 +129,46 @@
   <data name="InitializingConsole" xml:space="preserve">
     <value>(Initializing NuGet Console)</value>
   </data>
+  <data name="PackageInfo_Id_Description" xml:space="preserve">
+    <value>Package identifier.</value>
+  </data>
+  <data name="PackageInfo_Id_DisplayName" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="PackageInfo_Version_Description" xml:space="preserve">
+    <value>Package version.</value>
+  </data>
+  <data name="PackageInfo_Version_DisplayName" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="PackageInfo_Title_Description" xml:space="preserve">
+    <value>Package title.</value>
+  </data>
+  <data name="PackageInfo_Title_DisplayName" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="PackageInfo_Authors_Description" xml:space="preserve">
+    <value>Package authors.</value>
+  </data>
+  <data name="PackageInfo_Authors_DisplayName" xml:space="preserve">
+    <value>Authors</value>
+  </data>
+  <data name="PackageInfo_InstallPath_Description" xml:space="preserve">
+    <value>Package installation location.</value>
+  </data>
+  <data name="PackageInfo_InstallPath_DisplayName" xml:space="preserve">
+    <value>Install Path</value>
+  </data>
+  <data name="PackageInfo_DisplayName" xml:space="preserve">
+    <value>NuGet Package</value>
+  </data>
   <data name="Uninstall_Text" xml:space="preserve">
     <value>Uninstall</value>
   </data>
   <data name="Update_Text" xml:space="preserve">
     <value>Update</value>
+  </data>
+  <data name="PackageInfo_Category" xml:space="preserve">
+    <value>General</value>
   </data>
 </root>
