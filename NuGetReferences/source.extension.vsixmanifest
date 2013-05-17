@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+    <Identifier Id="80b50f0a-7ae3-420d-b70f-696dd11c90a7">
+        <Name>NuGet References</Name>
+        <Author>Clarius Labs</Author>
+        <Version>1.0.0.0</Version>
+        <Description xml:space="preserve">Visualize and manage your NuGet package references right in the solution explorer</Description>
+        <Locale>1033</Locale>
+        <Icon>Resources\Extension.png</Icon>
+        <MoreInfoUrl></MoreInfoUrl>
+        <GettingStartedGuide></GettingStartedGuide>
+        <PreviewImage></PreviewImage>
+        <SupportedProducts>
+            <VisualStudio Version="11.0">
+                <Edition>Pro</Edition>
+            </VisualStudio>
+        </SupportedProducts>
+        <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.5"/>
+    </Identifier>
+    <References>
+        <Reference Id="NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5" MinVersion="4.0">
+            <Name>NuGet Package Manager</Name>
+        </Reference>
+        <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
+            <Name>Visual Studio MPF</Name>
+        </Reference>
+    </References>
+    <Content>
+        <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
+        <CustomExtension Type="ClideComponent">|%CurrentProject%|</CustomExtension>
+    </Content>
+</Vsix>

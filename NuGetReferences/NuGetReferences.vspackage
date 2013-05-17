@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="80b50f0a-7ae3-420d-b70f-696dd11c90a7" xmlns="http://schemas.microsoft.com/dsltools/VSPackageDesigner">
+  <commandTable>
+    <rootHasCommandTable Id="e876243a-d67c-4010-8b31-2d2c6f1639d6">
+      <commandTable Id="4e480787-fec9-47fb-a3ad-13ca1e569bc7" packageGuid="80b50f0a-7ae3-420d-b70f-696dd11c90a7" commandSetGuid="e876243a-d67c-4010-8b31-2d2c6f1639d6" safeProjectName="ClariusLabs.NuGetReferences" counter="1" imagesGuid="4e480787-fec9-47fb-a3ad-13ca1e569bc7">
+        <groups>
+          <externalGroup Id="5bf9b2d5-08ea-4719-8ac3-8da3e4377e54" name="FileContents" idNumeric="1" parentData="guidSHLMainMenu,IDG_VS_CTXT_PROJWIN_FILECONTENTS_SCOPE,Group">
+            <buttons>
+              <groupBaseReferencesButtons Id="1c95d03b-da4d-4a12-8670-837863708ef8">
+                <buttonMoniker Id="64d70c79-c186-42df-a7e8-b2bab4c5bb0f" />
+              </groupBaseReferencesButtons>
+              <groupBaseReferencesButtons Id="03b77682-4439-42ae-8728-45965b610e1a">
+                <buttonMoniker Id="416cd41b-f517-4d28-9f68-91a0d7a6a0fb" />
+              </groupBaseReferencesButtons>
+            </buttons>
+          </externalGroup>
+        </groups>
+        <buttons>
+          <commandTableHasButtons Id="a1e4a9d1-62fc-4cc7-b2a3-ad8fa824ed81">
+            <button Id="64d70c79-c186-42df-a7e8-b2bab4c5bb0f" name="Update" idNumeric="2" buttonText="Update" menuText="Update" commandName="cmdidUpdate" toolTipText="Update" mod1="0" mod2="0" visibilityConstraints="0" icon="Update.bmp" commandFlags="DefaultDisabled, DontCache, TextChanges" />
+          </commandTableHasButtons>
+          <commandTableHasButtons Id="a9e893da-4cea-4e75-8b3b-405124e6e00c">
+            <button Id="416cd41b-f517-4d28-9f68-91a0d7a6a0fb" name="Uninstall" idNumeric="3" buttonText="Uninstall" menuText="Uninstall" commandName="cmdidUninstall" toolTipText="Uninstall" mod1="0" mod2="0" visibilityConstraints="0" icon="Uninstall.bmp" commandFlags="DefaultDisabled, DontCache, TextChanges" />
+          </commandTableHasButtons>
+        </buttons>
+      </commandTable>
+    </rootHasCommandTable>
+  </commandTable>
+  <userInterface>
+    <rootHasUserInterface Id="494c3dd6-cab4-4f86-9c12-ef2adb9030fa">
+      <userInterface Id="01389b21-ddd6-4314-b2a3-9ca68b5409d5" />
+    </rootHasUserInterface>
+  </userInterface>
+</root>

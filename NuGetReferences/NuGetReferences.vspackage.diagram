@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<vSPackageDesignerDiagram dslVersion="1.0.0.0" Id="63ca9977-816a-4878-9bf5-0cb7aa38d34b" absoluteBounds="0, 0, 11, 8.5" name="NuGetReferences">
+  <rootMoniker Id="80b50f0a-7ae3-420d-b70f-696dd11c90a7" />
+  <nestedChildShapes>
+    <commandTableSwimlane Id="13b769a4-2c15-4bb5-bd6e-c660ef76d6ef" absoluteBounds="0, 0, 8, 8.5">
+      <commandTableMoniker Id="4e480787-fec9-47fb-a3ad-13ca1e569bc7" />
+      <nestedChildShapes>
+        <externalGroupShape Id="ef437b23-4e9b-44f7-bb50-bd381332023a" absoluteBounds="0.5, 0.75, 1.5, 0.625">
+          <externalGroupMoniker Id="5bf9b2d5-08ea-4719-8ac3-8da3e4377e54" />
+        </externalGroupShape>
+        <buttonShape Id="5cc5d1e8-7dea-4cbb-9baf-5dc6a0c13ee1" absoluteBounds="2.75, 0.75, 1.5, 0.625">
+          <buttonMoniker Id="64d70c79-c186-42df-a7e8-b2bab4c5bb0f" />
+        </buttonShape>
+        <buttonShape Id="8a1029de-c5da-406b-91c7-8c7221b9cf4b" absoluteBounds="2.75, 1.75, 1.5, 0.625">
+          <buttonMoniker Id="416cd41b-f517-4d28-9f68-91a0d7a6a0fb" />
+        </buttonShape>
+        <containsConnector Id="a04981a3-bfe0-41d5-99eb-d939bbc6e6d3" edgePoints="[(2 : 1.0625); (2.75 : 1.0625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+          <groupBaseReferencesButtonsMoniker Id="1c95d03b-da4d-4a12-8670-837863708ef8" />
+          <nodes>
+            <externalGroupShapeMoniker Id="ef437b23-4e9b-44f7-bb50-bd381332023a" />
+            <buttonShapeMoniker Id="5cc5d1e8-7dea-4cbb-9baf-5dc6a0c13ee1" />
+          </nodes>
+        </containsConnector>
+        <containsConnector Id="e385598b-e22d-40df-8513-afc6039e92e0" edgePoints="[(1.25 : 1.375); (1.25 : 2.0625); (2.75 : 2.0625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+          <groupBaseReferencesButtonsMoniker Id="03b77682-4439-42ae-8728-45965b610e1a" />
+          <nodes>
+            <externalGroupShapeMoniker Id="ef437b23-4e9b-44f7-bb50-bd381332023a" />
+            <buttonShapeMoniker Id="8a1029de-c5da-406b-91c7-8c7221b9cf4b" />
+          </nodes>
+        </containsConnector>
+      </nestedChildShapes>
+    </commandTableSwimlane>
+    <toolwindowSwimlane Id="77936e5e-f5fa-4ce9-97b1-691f78fdb94e" absoluteBounds="8, 0, 3, 8.5">
+      <userInterfaceMoniker Id="01389b21-ddd6-4314-b2a3-9ca68b5409d5" />
+    </toolwindowSwimlane>
+  </nestedChildShapes>
+</vSPackageDesignerDiagram>

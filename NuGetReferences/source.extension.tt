@@ -1,0 +1,47 @@
+﻿<#@ output extension=".vsixmanifest" #>
+<#@ Include File="Info.ttinclude" #>
+<?xml version="1.0" encoding="utf-8"?>
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+    <Identifier Id="<#=identifier#>">
+        <Name><#=product#></Name>
+        <Author><#=author#></Author>
+        <Version><#=version#></Version>
+        <Description xml:space="preserve"><#=description#></Description>
+        <Locale>1033</Locale>
+<#if(HasValue(eula))
+{
+#>
+        <License><#=eula#></License>
+<#
+}
+#>
+<#if(HasValue(image))
+{
+#>
+        <Icon><#=image#></Icon>
+<#
+}
+#>
+        <MoreInfoUrl></MoreInfoUrl>
+        <GettingStartedGuide></GettingStartedGuide>
+        <PreviewImage></PreviewImage>
+        <SupportedProducts>
+            <VisualStudio Version="<#=supportedVsVersion#>">
+                <Edition>Pro</Edition>
+            </VisualStudio>
+        </SupportedProducts>
+        <SupportedFrameworkRuntimeEdition MinVersion="<#=supportedFrxMinVersion#>" MaxVersion="<#=supportedFrxMaxVersion#>"/>
+    </Identifier>
+    <References>
+        <Reference Id="<#=nugetVsixId#>" MinVersion="<#=nugetMinVersion#>">
+            <Name><#=nugetVsixName#></Name>
+        </Reference>
+        <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
+            <Name>Visual Studio MPF</Name>
+        </Reference>
+    </References>
+    <Content>
+        <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
+        <CustomExtension Type="ClideComponent">|%CurrentProject%|</CustomExtension>
+    </Content>
+</Vsix>

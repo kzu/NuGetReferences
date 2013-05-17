@@ -1,0 +1,35 @@
+﻿<#+
+	public const string identifier = @"80b50f0a-7ae3-420d-b70f-696dd11c90a7";
+	public const string product = @"NuGet References";
+	public const string author = @"Clarius Labs";
+	public const string version = @"1.0.0.0";
+	public const string description = @"Visualize and manage your NuGet package references right in the solution explorer";
+	public const string eula = @"";
+	public const string icon = @"Resources\Extension.ico";
+	public const string image = @"Resources\Extension.png";
+
+	//------------------------------------------------------------------------------
+	// Project Info
+	//------------------------------------------------------------------------------
+	public const string rootNamespace = @"ClariusLabs.NuGetReferences";
+	public const string assemblyName = @"ClariusLabs.NuGetReferences";
+
+	//------------------------------------------------------------------------------
+	// Environment Info
+	//------------------------------------------------------------------------------
+	public const string supportedVsVersion = @"11.0";
+	public const string supportedFrxMinVersion = @"4.0";
+	public const string supportedFrxMaxVersion = @"4.5";
+
+	//------------------------------------------------------------------------------
+	// NuGet Info
+	//------------------------------------------------------------------------------
+	public const string nugetVsixName = @"NuGet Package Manager";
+	public const string nugetVsixId = @"NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5";
+	public const string nugetMinVersion = @"4.0";
+
+	public bool HasValue(string value)
+	{
+	    return !string.IsNullOrEmpty(value);
+	}
+#>
