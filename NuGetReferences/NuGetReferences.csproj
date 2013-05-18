@@ -316,6 +316,9 @@
   <Target Name="BeforeBuild">
     <Exec Command="&quot;C:\Program Files (x86)\Common Files\Microsoft Shared\TextTemplating\11.0\TextTransform.exe&quot; source.extension.tt" />
   </Target>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="$(OutputPath)$(TargetVsixContainerName)" DestinationFolder="..\" ContinueOnError="false" />
+  </Target>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
     <TrackFileAccess>false</TrackFileAccess>

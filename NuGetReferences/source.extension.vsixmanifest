@@ -3,7 +3,7 @@
     <Identifier Id="76ABCB85-30F9-482F-BB69-5C60A0512E40">
         <Name>NuGet References</Name>
         <Author>Daniel Cazzulino</Author>
-        <Version>1.1.0.0</Version>
+        <Version>1.0.0.0</Version>
         <Description xml:space="preserve">Visualize and manage your NuGet package references right from the solution explorer</Description>
         <Locale>1033</Locale>
         <License>License.txt</License>
@@ -22,6 +22,10 @@
         <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
             <Name>Visual Studio MPF</Name>
         </Reference>
+		<Reference Id="Clarius.DevStore11">
+			<Name>DevStore</Name>
+			<VsixPath>Clarius.DevStore11.vsix</VsixPath>
+		</Reference>
     </References>
     <Content>
         <VsPackage>|%CurrentProject%;PkgdefProjectOutputGroup|</VsPackage>
