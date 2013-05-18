@@ -154,6 +154,7 @@
       <LastGenOutput>VSPackage.resx</LastGenOutput>
     </None>
     <None Include="Info.ttinclude" />
+    <None Include="NuGetReferences.licenseheader" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -279,6 +280,9 @@
   <ItemGroup>
     <Content Include="..\Images\Preview.png">
       <Link>Resources\Preview.png</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="License.txt">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="Resources\Extension.png">

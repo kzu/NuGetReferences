@@ -28,11 +28,11 @@ var rootArea = ResourceFile.Build(resourceFile, targetClassName);
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Globalization;
+
 namespace <#= targetNamespace #>
-{
-    using System;
-    using System.Globalization;
-<#
+{<#
 RenderArea(rootArea, "");
 #>}
 

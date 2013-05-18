@@ -1,4 +1,22 @@
-﻿namespace ClariusLabs.NuGetReferences
+﻿#region Apache Licensed
+/*
+ Copyright 2013 Clarius Consulting, Daniel Cazzulino
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+#endregion
+
+namespace ClariusLabs.NuGetReferences
 {
     using System;
     using System.Collections.Concurrent;
@@ -101,6 +119,7 @@
             }
             else if (context.Direction == GraphContextDirection.Custom)
             {
+                // TODO: search isn't working :(
                 StartSearch(context);
                 return;
             }
@@ -159,10 +178,14 @@
                            let installed = node.GetValue<IVsPackageMetadata>(ReferencesGraphSchema.PackageProperty)
                            where !installedIds.Contains(Tuple.Create(installed.Id, installed.VersionString))
                            select node;
-            using (var scope = new GraphTransactionScope())
+
+            if (toRemove.Any())
             {
-                toRemove.ToList().ForEach(node => node.Remove());
-                scope.Complete();
+                using (var scope = new GraphTransactionScope())
+                {
+                    toRemove.ToList().ForEach(node => node.Remove());
+                    scope.Complete();
+                }
             }
 
             var progress = 0;
@@ -188,7 +211,7 @@
                     packagesConfig.GetId(),
                     Path.GetFileName(packagesConfig.PhysicalPath),
                     CodeNodeCategories.ProjectItem);
-
+                
                 fileNode.SetValue("Guid", Guid.NewGuid());
                 fileNode.SetValue("FilePath", packagesConfig.PhysicalPath);
                 fileNode.SetValue<string>(DgmlNodeProperties.Icon, GraphIcons.PackagesConfig);
@@ -276,7 +299,7 @@
                     searchItems.Enqueue(item);
                 }
 
-                // TrackChanges(context);
+                TrackChanges(context);
                 Application.Current.Dispatcher.BeginInvoke(new SearchHandler(SearchNextItem), term, context);
             }
         }

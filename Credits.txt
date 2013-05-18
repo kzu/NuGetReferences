@@ -1,0 +1,31 @@
+NuGet References
+Copyright 2013 Clarius Consulting, Daniel Cazzulino
+
+This project includes works distributed under the licenses listed below. 
+The full text for most of the licenses listed below can be found in the LICENSE.txt file accompanying each work. 
+The original copyright notices have been preserved within the respective files and or packages. 
+Please refer to the specific files and/or packages for more detailed information about the authors, copyright notices, and licenses.
+
+NetFx
+----- 
+Website:      http://netfx.codeplex.com
+Copyright:    Copyright (c) 2010, NETFx
+License:      BSD
+
+Clide
+----- 
+Website:      http://github.com/clariuslabs/clide
+Copyright:    Copyright (c) 2013, Clarius Consulting
+License:      BSD
+
+Enterprise Library Common
+----- 
+Website:      http://entlib.codeplex.com/
+Copyright:    Copyright (c) Microsoft Corporation
+License:      Microsoft Public License (Ms-PL)
+
+NuGet Visual Studio
+----- 
+Website:      http://nuget.codeplex.com/
+Copyright:    Copyright 2010-2012 Outercurve Foundation
+License:      Apache 2.0

@@ -1,10 +1,10 @@
 ﻿<#+
-	public const string identifier = @"80b50f0a-7ae3-420d-b70f-696dd11c90a7";
+    public const string identifier = @"76ABCB85-30F9-482F-BB69-5C60A0512E40";
 	public const string product = @"NuGet References";
-	public const string author = @"Clarius Labs";
-	public const string version = @"1.0.0.0";
-	public const string description = @"Visualize and manage your NuGet package references right in the solution explorer";
-	public const string eula = @"";
+	public const string author = @"Daniel Cazzulino";
+	public const string version = @"1.1.0.0";
+	public const string description = @"Visualize and manage your NuGet package references right from the solution explorer";
+	public const string eula = @"License.txt";
 	public const string icon = @"Resources\Extension.ico";
 	public const string image = @"Resources\Extension.png";
     public const string preview = @"Resources\Preview.png";

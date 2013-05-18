@@ -5,6 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetReferences", "NuGetRef
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FFF5B47-FE17-42DD-9623-9241C111D397}"
 	ProjectSection(SolutionItems) = preProject
+		Copyright.txt = Copyright.txt
+		Credits.txt = Credits.txt
+		License.txt = License.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
