@@ -15,6 +15,6 @@ And update/uninstall can be performed right from the node in the Solution Explor
 
 If you think this functionality is worth inviting me a small Stella Artois beer, please consider getting the  extension from the [DevStore](http://devstore.com) (you can also purchase it from Visual Studio itself, as explained on my blog).
 
-For convenience purposes, I'm also offering a pre-built VSIX here so you don't have to pay for it if you don't want to build it yourself. I am bundling the DevStore client bits with it, so that you can still consider exploring it for other cool extensions available through it ;). 
+For convenience purposes, I'm also offering a [pre-built VSIX](https://raw.github.com/danielkzu/NuGetReferences/master/ClariusLabs.NuGetReferences.vsix) here so you don't have to pay for it if you don't want to build it yourself. I am bundling the DevStore client bits with it, so that you can still consider exploring it for other cool extensions available through it ;). 
 
 Of course, if neither option is suitable to you, you can always get the source and build it yourself ;), this is open source after all, you know?
