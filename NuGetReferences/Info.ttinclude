@@ -1,9 +1,9 @@
 ﻿<#+
     public const string identifier = @"76ABCB85-30F9-482F-BB69-5C60A0512E40";
 	public const string product = @"NuGet References";
-	public const string author = @"Daniel Cazzulino";
-	public const string version = @"1.1.0.0";
-	public const string description = @"Visualize and manage your NuGet package references right from the solution explorer";
+	public const string author = @"Clarius Consulting";
+	public const string version = @"1.1.2.0";
+	public const string description = @"Save time by managing your NuGet references right from the Solution Explorer packages.config";
 	public const string eula = @"License.txt";
 	public const string icon = @"Resources\Extension.ico";
 	public const string image = @"Resources\Extension.png";
