@@ -45,8 +45,6 @@ namespace ClariusLabs.NuGetReferences
     [GraphProvider(Name = Id.PrefixDot + "GraphProvider")]
     public class ReferencesGraphProvider : IGraphProvider, IVsSelectionEvents
     {
-        delegate void SearchHandler(string term, IGraphContext context);
-
         private static readonly ITracer tracer = Tracer.Get<ReferencesGraphProvider>();
         private GraphIcons icons;
 
@@ -119,7 +117,6 @@ namespace ClariusLabs.NuGetReferences
             }
             else if (context.Direction == GraphContextDirection.Custom)
             {
-                // TODO: search isn't working :(
                 StartSearch(context);
                 return;
             }
@@ -212,10 +209,6 @@ namespace ClariusLabs.NuGetReferences
                     Path.GetFileName(packagesConfig.PhysicalPath),
                     CodeNodeCategories.ProjectItem);
                 
-                fileNode.SetValue("Guid", Guid.NewGuid());
-                fileNode.SetValue("FilePath", packagesConfig.PhysicalPath);
-                fileNode.SetValue<string>(DgmlNodeProperties.Icon, GraphIcons.PackagesConfig);
-
                 context.OutputNodes.Add(fileNode);
                 scope.Complete();
 
@@ -300,7 +293,7 @@ namespace ClariusLabs.NuGetReferences
                 }
 
                 TrackChanges(context);
-                Application.Current.Dispatcher.BeginInvoke(new SearchHandler(SearchNextItem), term, context);
+                Application.Current.Dispatcher.BeginInvoke(new Action<string, IGraphContext>(SearchNextItem), term, context);
             }
         }
 
@@ -323,7 +316,7 @@ namespace ClariusLabs.NuGetReferences
                 var configNode = this.GetOrCreateConfigNode(context, item);
                 AddPackageNodes(context, configNode, installedPackages);
 
-                Application.Current.Dispatcher.BeginInvoke(new SearchHandler(SearchNextItem), term, context);
+                Application.Current.Dispatcher.BeginInvoke(new Action<string, IGraphContext>(SearchNextItem), term, context);
             }
             else
             {

@@ -97,6 +97,60 @@ namespace ClariusLabs.NuGetReferences.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Installing DevStore version {version} from {vsixPath}..
+        /// </summary>
+        internal static string Package_DevStoreInstalling {
+            get {
+                return ResourceManager.GetString("Package_DevStoreInstalling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DevStore is currently not installed..
+        /// </summary>
+        internal static string Package_DevStoreNotInstalled {
+            get {
+                return ResourceManager.GetString("Package_DevStoreNotInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed DevStore version is {oldVersion}. Upgrading to {newVersion}..
+        /// </summary>
+        internal static string Package_DevStoreOldVersion {
+            get {
+                return ResourceManager.GetString("Package_DevStoreOldVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest version of DevStore will be activated on your next Visual Studio restart..
+        /// </summary>
+        internal static string Package_DevStoreRestartNeeded {
+            get {
+                return ResourceManager.GetString("Package_DevStoreRestartNeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not find DevStore installer at {vsixPath}. Please reinstall {product}..
+        /// </summary>
+        internal static string Package_DevStoreVsixNotFound {
+            get {
+                return ResourceManager.GetString("Package_DevStoreVsixNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verifying current version of DevStore.
+        /// </summary>
+        internal static string Package_VerifyingDevStore {
+            get {
+                return ResourceManager.GetString("Package_VerifyingDevStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Package authors..
         /// </summary>
         internal static string PackageInfo_Authors_Description {

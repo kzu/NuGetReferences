@@ -44,14 +44,13 @@ if(HasValue(preview))
             <Name>Visual Studio MPF</Name>
         </Reference>
 <#
-    var path = Path.Combine(Path.GetDirectoryName(this.Host.TemplateFile), "..\\Clarius.DevStore11.vsix");
-    // Embed DevStore if the vsix exists at the solution root.
-    if (File.Exists(path))
+    // Embed DevStore on trial builds
+    if (this.Host.ResolveParameterValue("","","BuildTrial") == "true")
     {
 #>
 		<Reference Id="Clarius.DevStore11">
 			<Name>DevStore</Name>
-			<VsixPath>Clarius.DevStore11.vsix</VsixPath>
+			<VsixPath>DevStore11.vsix</VsixPath>
 		</Reference>
 <#
 	}

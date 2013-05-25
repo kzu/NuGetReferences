@@ -171,4 +171,22 @@
   <data name="PackageInfo_Category" xml:space="preserve">
     <value>General</value>
   </data>
+  <data name="Package_DevStoreInstalling" xml:space="preserve">
+    <value>Installing DevStore version {version} from {vsixPath}.</value>
+  </data>
+  <data name="Package_DevStoreNotInstalled" xml:space="preserve">
+    <value>DevStore is currently not installed.</value>
+  </data>
+  <data name="Package_DevStoreOldVersion" xml:space="preserve">
+    <value>Installed DevStore version is {oldVersion}. Upgrading to {newVersion}.</value>
+  </data>
+  <data name="Package_DevStoreRestartNeeded" xml:space="preserve">
+    <value>Latest version of DevStore will be activated on your next Visual Studio restart.</value>
+  </data>
+  <data name="Package_DevStoreVsixNotFound" xml:space="preserve">
+    <value>Could not find DevStore installer at {vsixPath}. Please reinstall {product}.</value>
+  </data>
+  <data name="Package_VerifyingDevStore" xml:space="preserve">
+    <value>Verifying current version of DevStore</value>
+  </data>
 </root>

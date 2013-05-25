@@ -45,6 +45,19 @@
               <ToolTipText>Uninstall</ToolTipText>
             </Strings>
         </Button>
+        <Button guid="guidCommandSet" id="CheckFullVersion" priority="0x0100"><CommandFlag>DefaultDisabled</CommandFlag>
+	        <CommandFlag>DefaultInvisible</CommandFlag>
+	        <CommandFlag>DontCache</CommandFlag>
+	        <CommandFlag>DynamicVisibility</CommandFlag>
+	        <CommandFlag>TextOnly</CommandFlag>
+
+            <Strings>
+              <CommandName>cmdidCheckFullVersion</CommandName>
+              <ButtonText>Check Full Version</ButtonText>
+              <MenuText>Check Full Version</MenuText>
+              <ToolTipText>Check Full Version</ToolTipText>
+            </Strings>
+        </Button>
     </Buttons>
 
 
@@ -62,6 +75,9 @@
 	     <CommandPlacement guid="guidCommandSet" id="Uninstall" priority="0x0100"> 
 	         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJWIN_FILECONTENTS_SCOPE" />
 		   </CommandPlacement> 
+	     <CommandPlacement guid="guidCommandSet" id="CheckFullVersion" priority="0x0100"> 
+	         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJWIN_FILECONTENTS_SCOPE" />
+		   </CommandPlacement> 
 		</CommandPlacements>
   
 
@@ -73,12 +89,13 @@
     <GuidSymbol name="guidCommandSet" value="{e876243a-d67c-4010-8b31-2d2c6f1639d6}">
       <IDSymbol name="Update" value="0x0002" />
       <IDSymbol name="Uninstall" value="0x0003" />
+      <IDSymbol name="CheckFullVersion" value="0x0004" />
     </GuidSymbol>
 
-      <GuidSymbol name="Update.bmpGuid" value="{14c1aa15-450d-4571-a316-1796c51b5107}">
+      <GuidSymbol name="Update.bmpGuid" value="{a3b67fb0-e7db-46ac-a877-0abb709126ce}">
         <IDSymbol name="Update.bmpId" value="1" />
       </GuidSymbol>
-      <GuidSymbol name="Uninstall.bmpGuid" value="{88826f44-0515-4694-8dfb-28f9c2d99ac6}">
+      <GuidSymbol name="Uninstall.bmpGuid" value="{a9a027d1-a335-4ced-85ee-621d86666c33}">
         <IDSymbol name="Uninstall.bmpId" value="1" />
       </GuidSymbol>
 </Symbols>

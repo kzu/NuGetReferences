@@ -63,11 +63,13 @@ namespace ClariusLabs.NuGetReferences.Commands
 
         public void QueryStatus(IMenuCommand command)
         {
-            command.Enabled = console.IsInitialized && !console.IsBusy;
+            command.Enabled = console.IsInitialized && !console.IsBusy && !Trial.CheckPending;
             if (!console.IsInitialized)
                 command.Text = Strings.Uninstall.Text + " " + Strings.InitializingConsole;
             if (console.IsBusy)
                 command.Text = Strings.Uninstall.Text + " " + Strings.ExecutingCommand;
+
+            Trial.IncrementUsage();
         }
 
         public string Text { get; set; }

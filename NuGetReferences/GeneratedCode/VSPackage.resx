@@ -62,7 +62,7 @@
     <value>NuGet References</value>
   </data>
   <data name="112" xml:space="preserve">
-    <value>Visualize and manage your NuGet package references right in the solution explorer</value>
+    <value>Save time by managing your NuGet references right from the Solution Explorer packages.config</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="400" type="System.Resources.ResXFileRef, System.Windows.Forms">
