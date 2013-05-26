@@ -38,7 +38,7 @@ namespace ClariusLabs.NuGetReferences
     [ProvideBindingPath]
     public class NuGetReferencesPackage : Package, IShellPackage
     {
-        private static readonly ITracer tracer = Tracer.Get<NuGetReferencesPackage>();
+        private ITracer tracer;
         private IDisposable host;
 
         protected override void Initialize()
@@ -53,6 +53,9 @@ namespace ClariusLabs.NuGetReferences
 #else
             Tracer.Manager.SetTracingLevel(this.GetType().Namespace, SourceLevels.Information);
 #endif
+
+            this.tracer = Tracer.Get<NuGetReferencesPackage>();
+            Trial.Initialize(tracer);
 
             try
             {
@@ -79,60 +82,10 @@ namespace ClariusLabs.NuGetReferences
                     icon: System.Windows.MessageBoxImage.Error);
             }
 
-            VerifyDevStore();
+            Trial.EnsureDevStore(Constants.VsixIdentifier, "Clarius.DevStore11", "DevStore11.vsix");
         }
 
         public IDevEnv DevEnv { get; private set; }
         public ISelectedGraphNode SelectedNode { get; set; }
-
-        [Conditional("TRIAL")]
-        private void VerifyDevStore()
-        {
-            try
-            {
-                var extensionManager = ServiceLocator.GlobalProvider.TryGetService<SVsExtensionManager, IVsExtensionManager>();
-                if (extensionManager == null)
-                    return;
-
-                var myExtension = default(IInstalledExtension);
-                if (!extensionManager.TryGetInstalledExtension(Constants.VsixIdentifier, out myExtension));
-                if (myExtension == null)
-                    return;
-
-                var vsixPath = Path.Combine(myExtension.InstallPath, "DevStore11.vsix");
-                if (!File.Exists(vsixPath))
-                {
-                    tracer.Error(Strings.Package.DevStoreVsixNotFound(vsixPath, Constants.ProductName));
-                    return;
-                }
-
-                var installableDevStore = extensionManager.CreateInstallableExtension(vsixPath);
-                if (installableDevStore == null)
-                    return;
-
-                var existingDevStore = default(IInstalledExtension);
-                if (!extensionManager.TryGetInstalledExtension("Clarius.DevStore11", out existingDevStore))
-                    tracer.Info(Strings.Package.DevStoreNotInstalled);
-                // TODO: auto-enable if user has disabled ;)
-                // else if (!extensionManager.Enable(
-                    
-                if (existingDevStore != null && existingDevStore.Header.Version < installableDevStore.Header.Version)
-                    tracer.Info(Strings.Package.DevStoreOldVersion(existingDevStore.Header.Version, installableDevStore.Header.Version));
-
-                var shouldInstall = existingDevStore == null ||
-                    existingDevStore.Header.Version < installableDevStore.Header.Version;
-
-                if (shouldInstall)
-                {
-                    tracer.Info(Strings.Package.DevStoreInstalling(installableDevStore.Header.Version, vsixPath));
-                    if (extensionManager.Install(installableDevStore, false) != RestartReason.None)
-                        tracer.Info(Strings.Package.DevStoreRestartNeeded);
-                }
-            }
-            catch (Exception e)
-            {
-                tracer.Error(e, "Failed to update DevStore extension");
-            }
-        }
     }
 }

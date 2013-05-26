@@ -110,3 +110,6 @@ UpgradeLog*.XML
 Clarius.DevStore11.vsix
 
 /ClariusLabs.NuGetReferences.vsix
+/build.bat
+
+/ClariusLabs.NuGetReferences.Trial.vsix

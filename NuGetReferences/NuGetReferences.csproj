@@ -41,7 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\CheckFullVersion.cs" />
-    <Compile Include="Commands\Trial.cs" />
+    <Compile Include="Trial.cs" />
     <Compile Include="Commands\Uninstall.cs" />
     <Compile Include="Commands\Update.cs" />
     <Compile Include="Constants.cs" />

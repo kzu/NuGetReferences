@@ -48,7 +48,7 @@ namespace ClariusLabs.NuGetReferences.Commands
             }
             finally
             {
-                Trial.Reset();
+                Trial.ResetUsage();
             }
         }
 
