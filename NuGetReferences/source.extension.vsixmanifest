@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-    <Identifier Id="76ABCB85-30F9-482F-BB69-5C60A0512E40">
+    <Identifier Id="ClariusLabs.NuGetReferences">
         <Name>NuGet References</Name>
         <Author>Clarius Labs</Author>
         <Version>1.1.3.0</Version>
