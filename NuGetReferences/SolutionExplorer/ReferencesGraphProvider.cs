@@ -55,7 +55,6 @@ namespace ClariusLabs.NuGetReferences
         private IVsPackageInstallerEvents installerEvents;
         private SelectionService selectionService;
         private ConcurrentQueue<IItemNode> searchItems;
-
         private List<IGraphContext> trackingContext = new List<IGraphContext>();
 
         [ImportingConstructor]
@@ -161,10 +160,10 @@ namespace ClariusLabs.NuGetReferences
             if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
                 return;
 
-            AddPackageNodes(context, parentNode, GetInstalledPackages(filePath));
+            AddPackageNodes(context, () => parentNode, GetInstalledPackages(filePath));
         }
 
-        private static void AddPackageNodes(IGraphContext context, GraphNode parentNode, IEnumerable<IVsPackageMetadata> installedPackages)
+        private void AddPackageNodes(IGraphContext context, Func<GraphNode> parentNode, IEnumerable<IVsPackageMetadata> installedPackages)
         {
             var allPackages = installedPackages.ToList();
             var installedIds = new HashSet<Tuple<string, string>>(allPackages.Select(x => Tuple.Create(x.Id, x.VersionString)));
@@ -173,7 +172,7 @@ namespace ClariusLabs.NuGetReferences
             var toRemove = from node in context.OutputNodes
                            where node.IsPackageNode()
                            let installed = node.GetValue<IVsPackageMetadata>(ReferencesGraphSchema.PackageProperty)
-                           where !installedIds.Contains(Tuple.Create(installed.Id, installed.VersionString))
+                           where installed != null && !installedIds.Contains(Tuple.Create(installed.Id, installed.VersionString))
                            select node;
 
             if (toRemove.Any())
@@ -189,45 +188,51 @@ namespace ClariusLabs.NuGetReferences
             var count = allPackages.Count;
             foreach (var nugetPackage in allPackages)
             {
-                var node = GetOrCreatePackageNode(context, parentNode, nugetPackage);
+                var node = GetOrCreatePackageNode(context, parentNode(), nugetPackage);
                 context.ReportProgress(++progress, count, null);
 
                 if (context.CancelToken.IsCancellationRequested)
                     break;
 
                 context.CancelToken.ThrowIfCancellationRequested();
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(100);
             }
         }
 
         private GraphNode GetOrCreateConfigNode(IGraphContext context, IItemNode packagesConfig)
         {
-            using (var scope = new GraphTransactionScope())
+            var nodeId = packagesConfig.GetId();
+            var fileNode = context.Graph.Nodes.Get(nodeId);
+            if (fileNode == null)
             {
-                var fileNode = context.Graph.Nodes.GetOrCreate(
-                    packagesConfig.GetId(),
-                    Path.GetFileName(packagesConfig.PhysicalPath),
-                    CodeNodeCategories.ProjectItem);
-                
-                context.OutputNodes.Add(fileNode);
-                scope.Complete();
+                using (var scope = new GraphTransactionScope())
+                {
+                    fileNode = context.Graph.Nodes.GetOrCreate(
+                        nodeId,
+                        Path.GetFileName(packagesConfig.PhysicalPath),
+                        CodeNodeCategories.ProjectItem);
 
-                return fileNode;
+                    if (!context.OutputNodes.Contains(fileNode))
+                        context.OutputNodes.Add(fileNode);
+
+                    scope.Complete();
+                }
             }
+
+            return fileNode;
         }
 
-        private static GraphNode GetOrCreatePackageNode(IGraphContext context, GraphNode parent, IVsPackageMetadata package)
+        private GraphNode GetOrCreatePackageNode(IGraphContext context, GraphNode parent, IVsPackageMetadata package)
         {
-            using (var scope = new GraphTransactionScope())
+            var parentId = parent.GetValue<GraphNodeId>("Id");
+            var nodeId = GraphNodeId.GetNested(
+                parentId,
+                GraphNodeId.GetPartial(CodeGraphNodeIdName.Member, package.Id),
+                GraphNodeId.GetPartial(CodeGraphNodeIdName.Parameter, package.VersionString));
+            var node = context.Graph.Nodes.Get(nodeId);
+            if (node == null)
             {
-                var parentId = parent.GetValue<GraphNodeId>("Id");
-                var nodeId = GraphNodeId.GetNested(
-                    parentId,
-                    GraphNodeId.GetPartial(CodeGraphNodeIdName.Member, package.Id),
-                    GraphNodeId.GetPartial(CodeGraphNodeIdName.Parameter, package.VersionString));
-
-                var node = context.Graph.Nodes.Get(nodeId);
-                if (node == null)
+                using (var scope = new GraphTransactionScope())
                 {
                     node = context.Graph.Nodes.GetOrCreate(nodeId, package.Id, ReferencesGraphSchema.PackageCategory);
 
@@ -235,14 +240,14 @@ namespace ClariusLabs.NuGetReferences
                     node.SetValue<IVsPackageMetadata>(ReferencesGraphSchema.PackageProperty, package);
 
                     // Establish the relationship with the parent node.
-                    context.Graph.Links.GetOrCreate(parent, node, "Packages", GraphCommonSchema.Contains);
+                    context.Graph.Links.GetOrCreate(parent, node, null, GraphCommonSchema.Contains);
 
                     context.OutputNodes.Add(node);
                     scope.Complete();
                 }
-
-                return node;
             }
+
+            return node;
         }
 
         private IEnumerable<IVsPackageMetadata> GetInstalledPackages(string packagesConfig)
@@ -311,10 +316,12 @@ namespace ClariusLabs.NuGetReferences
             {
                 var normalizedTerm = term.ToLowerInvariant();
                 var installedPackages = GetInstalledPackages(item.PhysicalPath)
-                    .Where(x => x.Id.ToLowerInvariant().Contains(normalizedTerm));
+                    .Where(x => x.Id.ToLowerInvariant().Contains(normalizedTerm))
+                    .ToList();
 
-                var configNode = this.GetOrCreateConfigNode(context, item);
-                AddPackageNodes(context, configNode, installedPackages);
+                tracer.Info("Found {0} packages installed matching {1} on package file {2}",
+                    installedPackages.Count, normalizedTerm, item.PhysicalPath);
+                AddPackageNodes(context, () => this.GetOrCreateConfigNode(context, item), installedPackages);
 
                 Application.Current.Dispatcher.BeginInvoke(new Action<string, IGraphContext>(SearchNextItem), term, context);
             }
@@ -383,7 +390,7 @@ namespace ClariusLabs.NuGetReferences
                                 var selection = new NuGetPackage
                                 {
                                     Id = selectedPackage.Id,
-                                    Title = selectedPackage.Title, 
+                                    Title = selectedPackage.Title,
                                     Version = selectedPackage.VersionString,
                                     Authors = string.Join(", ", selectedPackage.Authors),
                                     InstallPath = selectedPackage.InstallPath,

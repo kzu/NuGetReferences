@@ -327,7 +327,7 @@
     <Exec Command="&quot;C:\Program Files (x86)\Common Files\Microsoft Shared\TextTemplating\11.0\TextTransform.exe&quot; -a BuildTrial!$(BuildTrial) source.extension.tt" />
   </Target>
   <Target Name="AfterBuild">
-    <Copy SourceFiles="$(OutputPath)$(TargetVsixContainerName)" DestinationFolder="..\" ContinueOnError="false" />
+    <Copy Condition="Exists('$(OutputPath)$(TargetVsixContainerName)')" SourceFiles="$(OutputPath)$(TargetVsixContainerName)" DestinationFolder="..\" ContinueOnError="false" />
   </Target>
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
