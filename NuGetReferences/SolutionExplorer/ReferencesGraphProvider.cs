@@ -163,24 +163,27 @@ namespace ClariusLabs.NuGetReferences
             AddPackageNodes(context, () => parentNode, GetInstalledPackages(filePath));
         }
 
-        private void AddPackageNodes(IGraphContext context, Func<GraphNode> parentNode, IEnumerable<IVsPackageMetadata> installedPackages)
+        private void AddPackageNodes(IGraphContext context, Func<GraphNode> parentNode, IEnumerable<IVsPackageMetadata> installedPackages, bool removeUninstalledNodes = true)
         {
             var allPackages = installedPackages.ToList();
             var installedIds = new HashSet<Tuple<string, string>>(allPackages.Select(x => Tuple.Create(x.Id, x.VersionString)));
 
-            // Remove nodes that aren't installed anymore.
-            var toRemove = from node in context.OutputNodes
-                           where node.IsPackageNode()
-                           let installed = node.GetValue<IVsPackageMetadata>(ReferencesGraphSchema.PackageProperty)
-                           where installed != null && !installedIds.Contains(Tuple.Create(installed.Id, installed.VersionString))
-                           select node;
-
-            if (toRemove.Any())
+            if (removeUninstalledNodes)
             {
-                using (var scope = new GraphTransactionScope())
+                // Remove nodes that aren't installed anymore.
+                var toRemove = from node in context.OutputNodes
+                               where node.IsPackageNode()
+                               let installed = node.GetValue<IVsPackageMetadata>(ReferencesGraphSchema.PackageProperty)
+                               where installed != null && !installedIds.Contains(Tuple.Create(installed.Id, installed.VersionString))
+                               select node;
+
+                if (toRemove.Any())
                 {
-                    toRemove.ToList().ForEach(node => node.Remove());
-                    scope.Complete();
+                    using (var scope = new GraphTransactionScope())
+                    {
+                        toRemove.ToList().ForEach(node => node.Remove());
+                        scope.Complete();
+                    }
                 }
             }
 
@@ -321,7 +324,7 @@ namespace ClariusLabs.NuGetReferences
 
                 tracer.Info("Found {0} packages installed matching {1} on package file {2}",
                     installedPackages.Count, normalizedTerm, item.PhysicalPath);
-                AddPackageNodes(context, () => this.GetOrCreateConfigNode(context, item), installedPackages);
+                AddPackageNodes(context, () => this.GetOrCreateConfigNode(context, item), installedPackages, false);
 
                 Application.Current.Dispatcher.BeginInvoke(new Action<string, IGraphContext>(SearchNextItem), term, context);
             }
