@@ -19,13 +19,9 @@
 namespace ClariusLabs.NuGetReferences
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+    using System.Collections;
     using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.Shell.Interop;
-    using System.Collections;
-    using System.ComponentModel.Composition;
 
     internal class SelectionService
     {

@@ -20,7 +20,6 @@ namespace ClariusLabs.NuGetReferences.Commands
 {
     using System;
     using System.ComponentModel.Composition;
-    using System.Linq;
     using Clide.Commands;
     using EnvDTE;
     using Microsoft.VisualStudio.Shell;

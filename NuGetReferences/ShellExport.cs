@@ -20,7 +20,6 @@ namespace ClariusLabs.NuGetReferences
 {
     using System;
     using System.ComponentModel.Composition;
-    using System.Linq;
     using Microsoft.VisualStudio.Shell;
 
     [PartCreationPolicy(CreationPolicy.Shared)]

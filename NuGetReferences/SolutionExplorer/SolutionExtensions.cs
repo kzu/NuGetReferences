@@ -18,15 +18,12 @@
 
 namespace ClariusLabs.NuGetReferences
 {
-    using EnvDTE;
-    using Microsoft.VisualStudio;
-    using Microsoft.VisualStudio.GraphModel;
-    using Microsoft.VisualStudio.GraphModel.Schemas;
-    using Microsoft.VisualStudio.PlatformUI;
-    using Microsoft.VisualStudio.Shell.Interop;
     using System;
     using System.IO;
     using Clide.Solution;
+    using EnvDTE;
+    using Microsoft.VisualStudio.GraphModel;
+    using Microsoft.VisualStudio.GraphModel.Schemas;
 
     internal static class SolutionExtensions
     {

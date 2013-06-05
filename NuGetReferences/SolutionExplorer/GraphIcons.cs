@@ -18,16 +18,10 @@
 
 namespace ClariusLabs.NuGetReferences
 {
-    using Microsoft.VisualStudio.Shell.Interop;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-    using System.Windows.Threading;
-    using Microsoft.Internal.VisualStudio.PlatformUI;
+    using Microsoft.VisualStudio.Shell.Interop;
 
     public class GraphIcons
     {

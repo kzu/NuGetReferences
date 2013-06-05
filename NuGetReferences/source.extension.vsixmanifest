@@ -3,7 +3,7 @@
     <Identifier Id="ClariusLabs.NuGetReferences">
         <Name>NuGet References</Name>
         <Author>Clarius Labs</Author>
-        <Version>1.1.4.0</Version>
+        <Version>1.2</Version>
         <Description xml:space="preserve">Save time by managing your NuGet references right from the Solution Explorer packages.config</Description>
         <Locale>1033</Locale>
         <License>License.txt</License>

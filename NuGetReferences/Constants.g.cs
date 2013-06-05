@@ -1,7 +1,5 @@
 ﻿namespace ClariusLabs.NuGetReferences
 {
-    using System;
-    using System.Linq;
 
     partial class Constants
     {

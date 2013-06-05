@@ -16,7 +16,6 @@
 */
 #endregion
 
-using Microsoft.VisualStudio.Shell;
 namespace ClariusLabs.NuGetReferences
 {
     using System;

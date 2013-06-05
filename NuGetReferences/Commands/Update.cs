@@ -20,20 +20,13 @@ namespace ClariusLabs.NuGetReferences.Commands
 {
     using System;
     using System.ComponentModel.Composition;
-    using System.Diagnostics;
     using System.Linq;
-    using System.Windows;
+    using ClariusLabs.NuGetReferences.Properties;
     using Clide;
     using Clide.Commands;
-    using Clide.Solution;
-    using Microsoft.VisualStudio;
-    using Microsoft.VisualStudio.GraphModel.Schemas;
-    using Microsoft.VisualStudio.Shell;
-    using Microsoft.VisualStudio.Shell.Interop;
-    using NuGet.VisualStudio;
-    using System.Dynamic;
-    using ClariusLabs.NuGetReferences.Properties;
     using Clide.Diagnostics;
+    using Clide.Solution;
+    using NuGet.VisualStudio;
 
     [Command(Guids.PackageGuid, Guids.CommandSetGuid, CommandIds.Update)]
     public class Update : ICommandExtension

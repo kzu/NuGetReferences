@@ -2,7 +2,7 @@
     public const string identifier = @"ClariusLabs.NuGetReferences";
 	public const string product = @"NuGet References";
 	public const string author = @"Clarius Labs";
-	public const string version = @"1.1.4.0";
+	public const string version = @"1.2";
 	public const string description = @"Save time by managing your NuGet references right from the Solution Explorer packages.config";
 	public const string eula = @"License.txt";
 	public const string icon = @"Resources\Extension.ico";

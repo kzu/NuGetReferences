@@ -18,9 +18,7 @@
 
 //namespace ClariusLabs.NuGetReferences
 //{
-    using System;
-    using System.Linq;
-    using ClariusLabs.NuGetReferences.Properties;
+using ClariusLabs.NuGetReferences.Properties;
     using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
 
     // TODO: how to get the type to display nicely in the properties window?

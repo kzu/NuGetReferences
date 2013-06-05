@@ -20,11 +20,6 @@ namespace ClariusLabs.NuGetReferences
 {
     using Microsoft.VisualStudio.GraphModel;
     using Microsoft.VisualStudio.GraphModel.Schemas;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     internal static class GraphNodeExtensions
     {

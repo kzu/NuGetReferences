@@ -20,15 +20,13 @@ namespace ClariusLabs.NuGetReferences.Commands
 {
     using System;
     using System.ComponentModel.Composition;
-    using System.Diagnostics;
     using System.Linq;
-    using System.Windows;
+    using ClariusLabs.NuGetReferences.Properties;
     using Clide;
     using Clide.Commands;
+    using Clide.Diagnostics;
     using Clide.Solution;
     using NuGet.VisualStudio;
-    using ClariusLabs.NuGetReferences.Properties;
-    using Clide.Diagnostics;
 
     [Command(Guids.PackageGuid, Guids.CommandSetGuid, CommandIds.Uninstall)]
     public class Uninstall : ICommandExtension

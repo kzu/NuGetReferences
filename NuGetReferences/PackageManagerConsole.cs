@@ -20,10 +20,9 @@ namespace ClariusLabs.NuGetReferences
 {
     using System;
     using System.ComponentModel.Composition;
-    using System.Linq;
+    using System.Dynamic;
     using Clide;
     using Clide.VisualStudio;
-    using System.Dynamic;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.Shell.Interop;

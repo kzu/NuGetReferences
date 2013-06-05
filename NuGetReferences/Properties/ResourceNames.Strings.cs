@@ -8,10 +8,8 @@
 //------------------------------------------------------------------------------
 namespace ClariusLabs.NuGetReferences.Properties
 {
-    using System;
-    using System.Globalization;
-	
-	///	<summary>
+
+    ///	<summary>
 	///	Provides access to string resources.
 	///	</summary>
 	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("TextTemplate", "1.0")]

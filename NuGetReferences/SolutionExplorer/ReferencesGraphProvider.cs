@@ -22,25 +22,22 @@ namespace ClariusLabs.NuGetReferences
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.ComponentModel.Composition;
-    using System.Diagnostics;
     using System.Dynamic;
+    using System.IO;
     using System.Linq;
     using System.Threading;
     using System.Windows;
+    using System.Xml.Linq;
     using Clide;
+    using Clide.Diagnostics;
     using Clide.Solution;
     using Microsoft.Internal.VisualStudio.PlatformUI;
-    using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.GraphModel;
     using Microsoft.VisualStudio.GraphModel.Schemas;
+    using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.Shell.Interop;
     using NuGet.VisualStudio;
-    using EnvDTE;
-    using System.IO;
-    using NuGet;
-    using Clide.Diagnostics;
-    using System.Xml.Linq;
 
     [GraphProvider(Name = Id.PrefixDot + "GraphProvider")]
     public class ReferencesGraphProvider : IGraphProvider, IVsSelectionEvents

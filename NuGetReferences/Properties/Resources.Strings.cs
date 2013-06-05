@@ -6,8 +6,6 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Globalization;
 
 namespace ClariusLabs.NuGetReferences.Properties
 {

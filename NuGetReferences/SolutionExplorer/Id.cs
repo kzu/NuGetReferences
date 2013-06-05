@@ -18,8 +18,6 @@
 
 namespace ClariusLabs.NuGetReferences
 {
-    using System;
-    using System.Linq;
 
     internal static class Id
     {

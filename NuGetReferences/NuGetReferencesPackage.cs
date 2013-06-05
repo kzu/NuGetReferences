@@ -20,13 +20,11 @@ namespace ClariusLabs.NuGetReferences
 {
     using System;
     using System.Diagnostics;
-    using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using ClariusLabs.NuGetReferences.Properties;
     using Clide;
     using Clide.Diagnostics;
-    using Microsoft.VisualStudio.ExtensionManager;
     using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.Shell.Interop;
 

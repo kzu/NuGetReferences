@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClariusLabs.NuGetReferences.Properties {
-    using System;
-    
-    
+namespace ClariusLabs.NuGetReferences.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

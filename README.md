@@ -5,6 +5,10 @@ Extends Visual Studio solution explorer to expand the packages.config node and s
 
 ![NuGet packages in Solution Explorer](https://raw.github.com/danielkzu/NuGetReferences/master/Images/Nodes.png)
 
+Search directly from the Solution Explorer to find nuget packages used across a solution:
+
+![Search NuGet packages in Solution Explorer](https://raw.github.com/danielkzu/NuGetReferences/master/Images/Search.png)
+
 Properties of the selected NuGet package are also displayed in the properties window:
 
 ![Package properties in properties window](https://raw.github.com/danielkzu/NuGetReferences/master/Images/Properties.png)

@@ -18,7 +18,6 @@
 
 namespace ClariusLabs.NuGetReferences
 {
-    using System;
     using Clide;
 
     public interface IPackageManagerConsole : IToolWindow
