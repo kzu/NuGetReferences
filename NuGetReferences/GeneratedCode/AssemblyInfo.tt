@@ -1,7 +1,0 @@
-﻿<#@ include file="..\Info.ttinclude" #>
-<#@ output extension=".cs" #>
-<#@ assembly name="NuGet.Core.dll" #>
-using System.Reflection;
-
-[assembly: AssemblyTitle("<#= assemblyName #>")]
-[assembly: AssemblyDescription("<#= description #>")]

@@ -37,6 +37,9 @@ internal static class StringFormatWithExtension
 	/// all <see cref="DataBinder.Eval"/> expressions formats 
 	/// for property access.
 	/// </summary>
+	/// <nuget id="netfx-System.StringFormatWith" />
+	/// <param name="format" this="true">The string to format</param>
+	/// <param name="source">The source object to apply to format</param>
 	public static string FormatWith(this string format, object source)
 	{
 		if (format == null)

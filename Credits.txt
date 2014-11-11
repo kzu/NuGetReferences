@@ -14,7 +14,7 @@ License:      BSD
 
 Clide
 ----- 
-Website:      http://github.com/clariuslabs/clide
+Website:      http://github.com/Kzu/clide
 Copyright:    Copyright (c) 2013, Clarius Consulting
 License:      BSD
 

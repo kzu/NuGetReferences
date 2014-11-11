@@ -1,6 +1,6 @@
 ﻿#region Apache Licensed
 /*
- Copyright 2013 Clarius Consulting, Daniel Cazzulino
+ Copyright 2013 Daniel Cazzulino
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -19,6 +19,11 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
+
+[assembly: AssemblyCompany("Daniel Cazzulino")]
+[assembly: AssemblyProduct("NuGet References")]
+[assembly: AssemblyTitle("NuGetReferences")]
+[assembly: AssemblyDescription("Save time by managing your NuGet references right from the Solution Explorer packages.config")]
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyTrademark("")]

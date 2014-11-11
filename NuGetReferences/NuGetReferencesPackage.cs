@@ -1,6 +1,6 @@
 ﻿#region Apache Licensed
 /*
- Copyright 2013 Clarius Consulting, Daniel Cazzulino
+ Copyright 2013 Daniel Cazzulino
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,13 +16,13 @@
 */
 #endregion
 
-namespace ClariusLabs.NuGetReferences
+namespace Kzu.NuGetReferences
 {
     using System;
     using System.Diagnostics;
     using System.Linq;
     using System.Runtime.InteropServices;
-    using ClariusLabs.NuGetReferences.Properties;
+    using Kzu.NuGetReferences.Properties;
     using Clide;
     using Clide.Diagnostics;
     using Microsoft.VisualStudio.Shell;
@@ -37,14 +37,12 @@ namespace ClariusLabs.NuGetReferences
     public class NuGetReferencesPackage : Package, IShellPackage
     {
         private ITracer tracer;
-        private IDisposable host;
 
         protected override void Initialize()
         {
             base.Initialize();
 
-            this.host = Host.Initialize(this, "NuGet References", this.GetType().Namespace);
-            this.DevEnv = Clide.DevEnv.Get(this);
+            this.DevEnv = Host.Initialize(this);
 
 #if DEBUG
             Tracer.Manager.SetTracingLevel(this.GetType().Namespace, SourceLevels.Verbose);
@@ -53,7 +51,6 @@ namespace ClariusLabs.NuGetReferences
 #endif
 
             this.tracer = Tracer.Get<NuGetReferencesPackage>();
-            Trial.Initialize(tracer);
 
             try
             {
@@ -79,8 +76,6 @@ namespace ClariusLabs.NuGetReferences
                     title: Constants.ProductName,
                     icon: System.Windows.MessageBoxImage.Error);
             }
-
-            Trial.EnsureDevStore(Constants.VsixIdentifier, "Clarius.DevStore11", "DevStore11.vsix");
         }
 
         public IDevEnv DevEnv { get; private set; }

@@ -1,6 +1,6 @@
 ﻿#region Apache Licensed
 /*
- Copyright 2013 Clarius Consulting, Daniel Cazzulino
+ Copyright 2013 Daniel Cazzulino
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,19 +16,19 @@
 */
 #endregion
 
-namespace ClariusLabs.NuGetReferences.Commands
+namespace Kzu.NuGetReferences.Commands
 {
     using System;
     using System.ComponentModel.Composition;
     using System.Linq;
-    using ClariusLabs.NuGetReferences.Properties;
+    using Kzu.NuGetReferences.Properties;
     using Clide;
     using Clide.Commands;
     using Clide.Diagnostics;
     using Clide.Solution;
     using NuGet.VisualStudio;
 
-    [Command(Guids.PackageGuid, Guids.CommandSetGuid, CommandIds.Uninstall)]
+    [Command(Guids.CommandSetGuid, CommandIds.Uninstall)]
     public class Uninstall : ICommandExtension
     {
         private static readonly ITracer tracer = Tracer.Get<Uninstall>();
@@ -61,13 +61,11 @@ namespace ClariusLabs.NuGetReferences.Commands
 
         public void QueryStatus(IMenuCommand command)
         {
-            command.Enabled = console.IsInitialized && !console.IsBusy && !Trial.CheckPending;
+            command.Enabled = console.IsInitialized && !console.IsBusy;
             if (!console.IsInitialized)
                 command.Text = Strings.Uninstall.Text + " " + Strings.InitializingConsole;
             if (console.IsBusy)
                 command.Text = Strings.Uninstall.Text + " " + Strings.ExecutingCommand;
-
-            Trial.IncrementUsage();
         }
 
         public string Text { get; set; }

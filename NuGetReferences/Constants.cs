@@ -1,6 +1,6 @@
 ﻿#region Apache Licensed
 /*
- Copyright 2013 Clarius Consulting, Daniel Cazzulino
+ Copyright 2013 Daniel Cazzulino
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -16,12 +16,15 @@
 */
 #endregion
 
-namespace ClariusLabs.NuGetReferences
+namespace Kzu.NuGetReferences
 {
-
     public static partial class Constants
     {
+        public const string VsixIdentifier = "Kzu.NuGetReferences";
+        public const string ProductName = "NuGet References";
+        public const string NuGetBuildVersion = "2.8.50926.602";
+
         public const string NuGetPackageId = "F7D0E7A3-C60B-422A-BFAE-CEED36ADE7D2";
-        public const string ReleaseNotes = "https://raw.github.com/danielkzu/NuGetReferences/master/ReleaseNotes.md";
+        public const string ReleaseNotes = "https://raw.github.com/kzu/NuGetReferences/master/ReleaseNotes.md";
     }
 }

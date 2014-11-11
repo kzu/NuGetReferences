@@ -11,7 +11,7 @@
 <#@ Import Namespace="System.Xml.Linq" #>
 <#@ Import Namespace="System.Text.RegularExpressions" #>
 <#
-var targetNamespace = "ClariusLabs.NuGetReferences.Properties";
+var targetNamespace = "Kzu.NuGetReferences.Properties";
 var targetClassName = "Strings";
 var resourceFile = Path.ChangeExtension(this.Host.TemplateFile, "resx");
 

@@ -11,7 +11,7 @@
 <#@ Import Namespace="System.Xml.Linq" #>
 <#@ Import Namespace="System.Text.RegularExpressions" #>
 <#
-var targetNamespace = "ClariusLabs.NuGetReferences.Properties";
+var targetNamespace = "Kzu.NuGetReferences.Properties";
 var targetClassName = Path.GetFileNameWithoutExtension(this.Host.TemplateFile);
 var resourceFile = Path.Combine(Path.GetDirectoryName(this.Host.TemplateFile), "Resources.resx");
 
