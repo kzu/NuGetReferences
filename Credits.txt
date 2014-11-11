@@ -1,5 +1,5 @@
 NuGet References
-Copyright 2013 Clarius Consulting, Daniel Cazzulino
+Copyright 2013 Daniel Cazzulino
 
 This project includes works distributed under the licenses listed below. 
 The full text for most of the licenses listed below can be found in the LICENSE.txt file accompanying each work. 
@@ -8,7 +8,7 @@ Please refer to the specific files and/or packages for more detailed information
 
 NetFx
 ----- 
-Website:      http://netfx.codeplex.com
+Website:      http://github.com/netfx/extensions
 Copyright:    Copyright (c) 2010, NETFx
 License:      BSD
 
