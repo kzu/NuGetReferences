@@ -189,4 +189,7 @@
   <data name="Package_VerifyingDevStore" xml:space="preserve">
     <value>Verifying current version of DevStore</value>
   </data>
+  <data name="Reinstall_Text" xml:space="preserve">
+    <value>Reinstall</value>
+  </data>
 </root>

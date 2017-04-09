@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CommandIds.cs" />
+    <Compile Include="Commands\Reinstall.cs" />
     <Compile Include="Guids.cs" />
     <Compile Include="Commands\Uninstall.cs" />
     <Compile Include="Commands\Update.cs" />
