@@ -26,8 +26,10 @@
 //------------------------------------------------------------------------------
 namespace Kzu.NuGetReferences.Properties
 {
-
-    ///	<summary>
+    using System;
+    using System.Globalization;
+	
+	///	<summary>
 	///	Provides access to string resources.
 	///	</summary>
 	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("TextTemplate", "1.0")]
@@ -233,6 +235,12 @@ namespace Kzu.NuGetReferences.Properties
 		
 			/// <summary>
 			/// Resource name for a localized string similar to: 
+			///	"Latest version of DevStore will be activated on your next Visual Studio restart."
+			/// </summary>
+			public const string DevStoreRestartNeeded = "Package_DevStoreRestartNeeded";
+		
+			/// <summary>
+			/// Resource name for a localized string similar to: 
 			///	"Could not find DevStore installer at {vsixPath}. Please reinstall {product}."
 			/// </summary>
 			public const string DevStoreVsixNotFound = "Package_DevStoreVsixNotFound";
@@ -242,6 +250,20 @@ namespace Kzu.NuGetReferences.Properties
 			///	"Verifying current version of DevStore"
 			/// </summary>
 			public const string VerifyingDevStore = "Package_VerifyingDevStore";
+		}
+		
+		///	<summary>
+		///	Provides access to string resources.
+		///	</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("TextTemplate", "1.0")]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		public static partial class Reinstall
+		{
+			/// <summary>
+			/// Resource name for a localized string similar to: 
+			///	"Reinstall"
+			/// </summary>
+			public const string Text = "Reinstall_Text";
 		}
 	}
 }

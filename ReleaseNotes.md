@@ -1,3 +1,6 @@
+# 1.5
+* Add ability to reinstall packages through new "Reinstall" menu item.
+
 # 1.3
 * Removed generated code (via T4) for most stuff.
 * Removed dependency on legacy VSPackage Builder.

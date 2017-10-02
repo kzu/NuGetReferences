@@ -280,6 +280,20 @@ namespace Kzu.NuGetReferences.Properties
 			/// </summary>
 			public static string VerifyingDevStore { get { return Resources.Package_VerifyingDevStore; } }
 		}
+		
+		///	<summary>
+		///	Provides access to string resources.
+		///	</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("netfx-System.Strings", "1.0.0.0")]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		public static partial class Reinstall
+		{
+			/// <summary>
+			/// Looks up a localized string similar to: 
+			///	Reinstall
+			/// </summary>
+			public static string Text { get { return Resources.Reinstall_Text; } }
+		}
 	}
 }
 

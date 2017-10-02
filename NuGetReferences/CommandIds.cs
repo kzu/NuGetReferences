@@ -23,6 +23,7 @@ namespace Kzu.NuGetReferences
         public const int Update = 0x0002;
         public const int Uninstall = 0x0003;
         public const int CheckFullVersion = 0x0004;
+        public const int Reinstall = 0x0005;
 
     };
 }

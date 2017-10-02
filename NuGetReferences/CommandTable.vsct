@@ -10,77 +10,100 @@
 	under the License.
  -->
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <Extern href="stdidcmd.h"/>
-    <Extern href="vsshlids.h"/>
-    <Extern href="VSDbgCmd.h" />
-    <Extern href="VsDebugGuids.h"/>
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Extern href="VSDbgCmd.h" />
+  <Extern href="VsDebugGuids.h"/>
 
 
-    <!--The Commands section is where we the commands, menus and menu groups are defined.
+  <!--The Commands section is where we the commands, menus and menu groups are defined.
 	  This section uses a Guid to identify the package that provides the command defined inside it. -->
-    <Commands package="guidPackage">
-        <Buttons>
-            <Button guid="guidCommandSet" id="Update" priority="0x0100">
-                <Icon guid="Update.bmpGuid" id="Update.bmpId" />
-                <CommandFlag>DefaultDisabled</CommandFlag>
-                <CommandFlag>DontCache</CommandFlag>
-                <CommandFlag>TextChanges</CommandFlag>
+  <Commands package="guidPackage">
+    <Buttons>
+      <Button guid="guidCommandSet" id="Update" priority="0x0100">
+        <Icon guid="Update.bmpGuid" id="Update.bmpId" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>DontCache</CommandFlag>
+        <CommandFlag>TextChanges</CommandFlag>
 
-                <Strings>
-                    <CommandName>cmdidUpdate</CommandName>
-                    <ButtonText>Update</ButtonText>
-                    <MenuText>Update</MenuText>
-                    <ToolTipText>Update</ToolTipText>
-                </Strings>
-            </Button>
-            <Button guid="guidCommandSet" id="Uninstall" priority="0x0100">
-                <Icon guid="Uninstall.bmpGuid" id="Uninstall.bmpId" />
-                <CommandFlag>DefaultDisabled</CommandFlag>
-                <CommandFlag>DontCache</CommandFlag>
-                <CommandFlag>TextChanges</CommandFlag>
+        <Strings>
+          <CommandName>cmdidUpdate</CommandName>
+          <ButtonText>Update</ButtonText>
+          <MenuText>Update</MenuText>
+          <ToolTipText>Update</ToolTipText>
+        </Strings>
+      </Button>
 
-                <Strings>
-                    <CommandName>cmdidUninstall</CommandName>
-                    <ButtonText>Uninstall</ButtonText>
-                    <MenuText>Uninstall</MenuText>
-                    <ToolTipText>Uninstall</ToolTipText>
-                </Strings>
-            </Button>
-        </Buttons>
+      <Button guid="guidCommandSet" id="Reinstall" priority="0x0100">
+        <Icon guid="Reinstall.bmpGuid" id="Reinstall.bmpId" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>DontCache</CommandFlag>
+        <CommandFlag>TextChanges</CommandFlag>
+
+        <Strings>
+          <CommandName>cmdidReinstall</CommandName>
+          <ButtonText>Reinstall</ButtonText>
+          <MenuText>Reinstall</MenuText>
+          <ToolTipText>Reinstall</ToolTipText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidCommandSet" id="Uninstall" priority="0x0100">
+        <Icon guid="Uninstall.bmpGuid" id="Uninstall.bmpId" />
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>DontCache</CommandFlag>
+        <CommandFlag>TextChanges</CommandFlag>
+
+        <Strings>
+          <CommandName>cmdidUninstall</CommandName>
+          <ButtonText>Uninstall</ButtonText>
+          <MenuText>Uninstall</MenuText>
+          <ToolTipText>Uninstall</ToolTipText>
+        </Strings>
+      </Button>
+    </Buttons>
 
 
-        <Bitmaps>
-            <Bitmap guid="Update.bmpGuid" href="Button Bitmaps\Update.bmp" usedList="Update.bmpId" />
-            <Bitmap guid="Uninstall.bmpGuid" href="Button Bitmaps\Uninstall.bmp" usedList="Uninstall.bmpId" />
-        </Bitmaps>
+    <Bitmaps>
+      <Bitmap guid="Update.bmpGuid" href="Button Bitmaps\Update.bmp" usedList="Update.bmpId" />
+      <Bitmap guid="Reinstall.bmpGuid" href="Button Bitmaps\Update.bmp" usedList="Reinstall.bmpId" />
+      <Bitmap guid="Uninstall.bmpGuid" href="Button Bitmaps\Uninstall.bmp" usedList="Uninstall.bmpId" />
+    </Bitmaps>
 
-    </Commands>
+  </Commands>
 
-    <CommandPlacements>
-        <CommandPlacement guid="guidCommandSet" id="Update" priority="0x0100">
-            <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJWIN_FILECONTENTS_SCOPE" />
-        </CommandPlacement>
-        <CommandPlacement guid="guidCommandSet" id="Uninstall" priority="0x0100">
-            <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJWIN_FILECONTENTS_SCOPE" />
-        </CommandPlacement>
-    </CommandPlacements>
+  <CommandPlacements>
+    <CommandPlacement guid="guidCommandSet" id="Update" priority="0x0100">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJWIN_FILECONTENTS_SCOPE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommandSet" id="Reinstall" priority="0x0100">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJWIN_FILECONTENTS_SCOPE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommandSet" id="Uninstall" priority="0x0100">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJWIN_FILECONTENTS_SCOPE" />
+    </CommandPlacement>
+  </CommandPlacements>
 
-    <Symbols>
-        <!-- This is the package guid. -->
-        <GuidSymbol name="guidPackage" value="{80b50f0a-7ae3-420d-b70f-696dd11c90a7}" />
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidPackage" value="{80b50f0a-7ae3-420d-b70f-696dd11c90a7}" />
 
-        <!-- This is the guid used to group the menu commands together -->
-        <GuidSymbol name="guidCommandSet" value="{e876243a-d67c-4010-8b31-2d2c6f1639d6}">
-            <IDSymbol name="Update" value="0x0002" />
-            <IDSymbol name="Uninstall" value="0x0003" />
-        </GuidSymbol>
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidCommandSet" value="{e876243a-d67c-4010-8b31-2d2c6f1639d6}">
+      <IDSymbol name="Update" value="0x0002" />
+      <IDSymbol name="Reinstall" value="0x0005" />
+      <IDSymbol name="Uninstall" value="0x0003" />      
+    </GuidSymbol>
 
-        <GuidSymbol name="Update.bmpGuid" value="{a3b67fb0-e7db-46ac-a877-0abb709126ce}">
-            <IDSymbol name="Update.bmpId" value="1" />
-        </GuidSymbol>
-        <GuidSymbol name="Uninstall.bmpGuid" value="{a9a027d1-a335-4ced-85ee-621d86666c33}">
-            <IDSymbol name="Uninstall.bmpId" value="1" />
-        </GuidSymbol>
-    </Symbols>
+    <GuidSymbol name="Update.bmpGuid" value="{a3b67fb0-e7db-46ac-a877-0abb709126ce}">
+      <IDSymbol name="Update.bmpId" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="Reinstall.bmpGuid" value="{cb7629c4-f723-4c72-a21b-8fecf4f96b2f}">
+      <IDSymbol name="Reinstall.bmpId" value="1" />
+    </GuidSymbol>
+    <GuidSymbol name="Uninstall.bmpGuid" value="{a9a027d1-a335-4ced-85ee-621d86666c33}">
+      <IDSymbol name="Uninstall.bmpId" value="1" />
+    </GuidSymbol>
+  </Symbols>
 
 </CommandTable>
